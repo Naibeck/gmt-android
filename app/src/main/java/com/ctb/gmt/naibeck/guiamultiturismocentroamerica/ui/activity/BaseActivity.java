@@ -1,7 +1,9 @@
-package com.ctb.gmt.naibeck.guiamultiturismocentroamerica;
+package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 
 public class BaseActivity extends AppCompatActivity {
 
