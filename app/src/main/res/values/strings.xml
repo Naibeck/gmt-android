@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Guia Multiturismo Centroamerica</string>
+    <string name="open_drawer">open_drawer</string>
+    <string name="close_drawer">close_drawe</string>
 </resources>
