@@ -27,8 +27,15 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         setViewModelToBinding();
 
         initToolbar(getToolbar());
+
+        initComponents(mBinding);
     }
 
+    public void initComponents(VB binding) {
+
+    }
+
+    //Toolbar
     public  Toolbar  getToolbar() {
         return mToolbar;
     }
