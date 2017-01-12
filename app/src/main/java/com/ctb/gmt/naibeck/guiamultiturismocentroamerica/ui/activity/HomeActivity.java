@@ -52,7 +52,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.sampleItem:
+                    case R.id.hotelesHostales:
                         Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
                         return true;
                 }
