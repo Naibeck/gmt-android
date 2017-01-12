@@ -1,11 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/sampleItem"
-            android:title="Sample"
-            android:icon="@mipmap/ic_launcher"
-            app:showAsAction="ifRoom"/>
+            android:id="@+id/dondeQuedamos"
+            android:title="@string/donde_quedamos">
+            <menu>
+                <item
+                    android:id="@+id/hotelesHostales"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/hoteles_hostales" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/queComemos"
+            android:title="@string/que_comemos">
+            <menu>
+                <item
+                    android:id="@+id/restauranteBares"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/restaurantes_bares" />
+                <item
+                    android:id="@+id/panaderiaCafeteria"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/cafe_panaderia" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/queHacemos"
+            android:title="¿Qué hacemos?">
+            <menu>
+                <item
+                    android:id="@+id/areaFamiliar"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/area_familiar" />
+                <item
+                    android:id="@+id/aventura"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/aventura" />
+                <item
+                    android:id="@+id/parquesTematicos"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/parques_tematicos" />
+                <item
+                    android:id="@+id/museosTeatros"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/museoTeatro" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/dondeCompramos"
+            android:title="@string/donde_compramos">
+            <menu>
+                <item
+                    android:id="@+id/transporte"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/transporte" />
+
+                <item
+                    android:id="@+id/servicioProfesionales"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/servicios_profesionales" />
+                <item
+                    android:id="@+id/estableciemtoServicio"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/establecimiento_servicio" />
+                <item
+                    android:id="@+id/institucionesFinancieras"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/instituciones_financieras" />
+                <item
+                    android:id="@+id/escuelaAcademias"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/instituciones_academias" />
+                <item
+                    android:id="@+id/centrosComerciales"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/centros_comerciales" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/miPueblo"
+            android:title="@string/mi_pueblo">
+            <menu>
+                <item
+                    android:id="@+id/fiestasPatronales"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/fiestas_patronales" />
+                <item
+                    android:id="@+id/festivales"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="@string/festivales" />
+            </menu>
+        </item>
     </group>
 </menu>

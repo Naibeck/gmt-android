@@ -2,4 +2,23 @@
     <string name="app_name">Guia Multiturismo Centroamerica</string>
     <string name="open_drawer">open_drawer</string>
     <string name="close_drawer">close_drawe</string>
+    <string name="donde_quedamos">¿Dónde nos quedamos?</string>
+    <string name="hoteles_hostales">Hoteles y Hostales</string>
+    <string name="que_comemos">¿Qué comemos?</string>
+    <string name="restaurantes_bares">Restaurantes y Bares</string>
+    <string name="cafe_panaderia">Cafés y Panaderias</string>
+    <string name="area_familiar">Área familiar</string>
+    <string name="aventura">Aventura</string>
+    <string name="parques_tematicos">Parques Tematicos</string>
+    <string name="museoTeatro">Museos y Teatros</string>
+    <string name="donde_compramos">¿Dónde compramos?</string>
+    <string name="transporte">Transporte</string>
+    <string name="servicios_profesionales">Servicios Profesionales</string>
+    <string name="establecimiento_servicio">Establecimientos de Servicio</string>
+    <string name="instituciones_financieras">Instituciones Financieras y otros</string>
+    <string name="instituciones_academias">Instituciones y Academias</string>
+    <string name="centros_comerciales">Centros Comerciales</string>
+    <string name="mi_pueblo">Mi Pueblo</string>
+    <string name="fiestas_patronales">Fiestas Patronales</string>
+    <string name="festivales">Festivales</string>
 </resources>
