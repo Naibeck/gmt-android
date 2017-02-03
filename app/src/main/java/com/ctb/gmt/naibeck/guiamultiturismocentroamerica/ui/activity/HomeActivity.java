@@ -5,13 +5,19 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel> {
     private static final String TAG = HomeActivity.class.getName();
@@ -45,6 +51,22 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         mNavMenu = binding.homeNavigationView;
 
         setupNavMenu();
+
+        getCategoryDomain().getCategoriPlace("1", new Callback<TourismCategory>() {
+            @Override
+            public void onResponse(Call<TourismCategory> call, Response<TourismCategory> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "TourismCategory: " + response.body().getCategoryPlaceList().get(0).getId());
+                }
+                Log.d(TAG, "TourismCategory: " + response.message());
+
+            }
+
+            @Override
+            public void onFailure(Call<TourismCategory> call, Throwable t) {
+                Log.d(TAG, "Error: ", t);
+            }
+        });
     }
 
     private void setupNavMenu() {

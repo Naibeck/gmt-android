@@ -1,15 +1,23 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 
 /**
  * Handles the base logic for the rest of fragments.
@@ -43,7 +51,23 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
 
     public abstract void setViewModelToBinding();
 
-    public Context getContext() {
-        return getContext();
+    public Intent goNextActivity(@NonNull Context context, @NonNull Class<?> activity) {
+        return new Intent(context, activity);
+    }
+
+    public void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment) {
+        getFragmentManager().beginTransaction()
+                .replace(containerId, fragment)
+                .commit();
+    }
+
+    public void addFragment(@IdRes int containerId, @NonNull Fragment fragment) {
+        getFragmentManager().beginTransaction()
+                .add(containerId, fragment)
+                .commit();
+    }
+
+    public @ColorInt int getColor(@ColorRes int resourceColor) {
+        return ContextCompat.getColor(getContext(), resourceColor);
     }
 }
