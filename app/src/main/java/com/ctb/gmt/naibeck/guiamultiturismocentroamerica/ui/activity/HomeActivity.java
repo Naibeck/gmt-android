@@ -8,11 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.AnimationUtil;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel;
 
 import retrofit2.Call;
@@ -46,11 +48,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     }
 
     @Override
-    public void initComponents(ActivityHomeBinding binding) {
+    public void initComponents(final ActivityHomeBinding binding) {
         mDrawerMenu = binding.homeDrawerLayout;
         mNavMenu = binding.homeNavigationView;
 
         setupNavMenu();
+
+        startScreenAnimation(binding);
 
         getCategoryDomain().getCategoriPlace("1", new Callback<TourismCategory>() {
             @Override
@@ -98,4 +102,40 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         mDrawerMenu.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }
+
+    private void startScreenAnimation(final ActivityHomeBinding binding) {
+        startFadeInAnimation(binding.contentHome.ivLogo, AnimationUtil.LOGO_ANIMATION_INTERVAL, new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                binding.contentHome.ivLogo.setVisibility(View.VISIBLE);
+                startFadeInAnimation(binding.contentHome.ivHome, AnimationUtil.HOME_BACKGROUND_ANIMATION, new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        binding.contentHome.ivHome.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
 }
