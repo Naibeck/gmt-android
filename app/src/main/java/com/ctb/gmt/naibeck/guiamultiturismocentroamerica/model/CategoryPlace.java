@@ -12,7 +12,7 @@ public class CategoryPlace implements Parcelable {
     @SerializedName("_id")
     private int mId;
 
-    @SerializedName("tipo_nombre")
+    @SerializedName("tipoNombre")
     private String mName;
 
     @SerializedName("lugares")
@@ -41,7 +41,6 @@ public class CategoryPlace implements Parcelable {
     public void setPlaceList(List<Places> mPlaceList) {
         this.mPlaceList = mPlaceList;
     }
-
 
     @Override
     public int describeContents() {

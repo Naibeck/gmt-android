@@ -17,7 +17,7 @@ public class Places implements Parcelable {
     @SerializedName("placeDescription")
     private String mDescription;
 
-    @SerializedName("placeAddress")
+    @SerializedName("placeAdress")
     private String mAddress;
 
     @SerializedName("placeLatitud")
