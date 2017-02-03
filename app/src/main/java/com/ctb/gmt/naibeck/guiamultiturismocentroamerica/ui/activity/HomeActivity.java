@@ -24,6 +24,8 @@ import retrofit2.Response;
 public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel> {
     private static final String TAG = HomeActivity.class.getName();
 
+    public static final String SELECTED_CATEGORY = "selectedCategory";
+
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
 
@@ -77,9 +79,21 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.hotelesHostales:
+                    case R.id.dondeQuedamos:
                         Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
-                        return true;
+                        break;
+                    case R.id.dondeCompramos:
+                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.miPueblo:
+                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.queComemos:
+                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.queHacemos:
+                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        break;
                 }
                 return false;
             }
@@ -138,4 +152,8 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         });
     }
 
+    public void goCategoryActivity(@NonNull String categoryId) {
+//        goNextActivity(CategoryActivity.class)
+//                .putExtra(SELECTED_CATEGORY, categoryId);
+    }
 }

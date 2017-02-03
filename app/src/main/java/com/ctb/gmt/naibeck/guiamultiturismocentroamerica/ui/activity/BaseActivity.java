@@ -91,8 +91,8 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         return getApplicationContext();
     }
 
-    public Intent goNextActivity(@NonNull Context context, @NonNull Class<?> activity) {
-        return new Intent(context, activity);
+    public Intent goNextActivity(@NonNull Class<?> activity) {
+        return new Intent(this, activity);
     }
 
     private GmtClient getClient() {
