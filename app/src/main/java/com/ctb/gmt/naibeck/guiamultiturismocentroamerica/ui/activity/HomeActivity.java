@@ -56,9 +56,8 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
             @Override
             public void onResponse(Call<TourismCategory> call, Response<TourismCategory> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "TourismCategory: " + response.body().toString());
+                    //TODO: Store or update whatever happens here
                 }
-                Log.d(TAG, "TourismCategory: " + response.message());
 
             }
 
