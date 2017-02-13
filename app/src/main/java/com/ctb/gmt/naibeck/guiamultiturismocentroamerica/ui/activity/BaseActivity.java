@@ -21,7 +21,9 @@ import com.android.annotations.NonNull;
 import com.android.annotations.Nullable;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.GmtClient;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.CategoryDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.domain.LocationDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.AnimationUtil;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.GmtSharedPreferences;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -41,6 +43,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
 
     private VB mBinding;
     private Toolbar mToolbar;
+    private LocationDomain mLocationDomain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,5 +156,18 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         return
                 ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                         && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public LocationDomain getLocationDomain(@NonNull LocationDomain.LocationDomainListener listener) {
+        if (mLocationDomain != null) {
+            return mLocationDomain;
+        }
+
+        mLocationDomain = new LocationDomain(this, listener);
+        return mLocationDomain;
+    }
+
+    public GmtSharedPreferences getGmtPreferences() {
+        return GmtSharedPreferences.getInstance(this);
     }
 }

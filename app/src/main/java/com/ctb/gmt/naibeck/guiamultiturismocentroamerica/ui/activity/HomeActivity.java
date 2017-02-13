@@ -1,21 +1,28 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.domain.LocationDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel;
+import com.google.android.gms.common.ConnectionResult;
 
-public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel> {
+public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel>
+        implements LocationDomain.LocationDomainListener {
+
     private static final String TAG = HomeActivity.class.getName();
 
     public static final String SELECTED_CATEGORY = "selectedCategory";
@@ -23,8 +30,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
     private BottomNavigationView mBottomView;
-//    private HomeFragment mHome;
-private MapFragment mMap;
+    private MapFragment mMap;
+    //    private HomeFragment mHome;
+
+    private LocationDomain mLocationDomain;
 
     @Override
     public int getLayout() {
@@ -53,6 +62,18 @@ private MapFragment mMap;
 
         setupNavMenu();
         bottomNavigationSetup();
+    }
+
+    @Override
+    protected void onStart() {
+        getLocationDomain().handleOnStart();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        getLocationDomain().handleOnStop();
+        super.onStop();
     }
 
     private void setupNavMenu() {
@@ -138,5 +159,42 @@ private MapFragment mMap;
     public void goCategoryActivity(@NonNull String categoryId) {
 //        goNextActivity(CategoryActivity.class)
 //                .putExtra(SELECTED_CATEGORY, categoryId);
+    }
+
+    private LocationDomain getLocationDomain() {
+        if (mLocationDomain != null) {
+            return mLocationDomain;
+        }
+
+        mLocationDomain = getLocationDomain(this);
+        return mLocationDomain;
+    }
+
+    /**
+     * Will store the last know location to preferences; this will allow to use that location without asking
+     * for it again
+     */
+    private void storeLocation() {
+        if (mLocationDomain.getLastKnownLocation() != null) {
+            getGmtPreferences().putLastStoredLocation(mLocationDomain.getLastKnownLocation());
+        }
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        Log.d(TAG, "Connection succeed");
+        if (isLocationPermissionGranted()) { //Check if permission were granted on Android 6 >
+            storeLocation();
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.d(TAG, "Connection suspended");
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "Connection failed: " + connectionResult.getErrorMessage());
     }
 }
