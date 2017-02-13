@@ -21,4 +21,6 @@
     <string name="mi_pueblo">Mi Pueblo</string>
     <string name="fiestas_patronales">Fiestas Patronales</string>
     <string name="festivales">Festivales</string>
+    <string name="home">Home</string>
+    <string name="map">Map</string>
 </resources>

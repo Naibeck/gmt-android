@@ -5,28 +5,28 @@
         <item
             android:id="@+id/dondeQuedamos"
             android:title="@string/donde_quedamos"
-            android:icon="@mipmap/ic_launcher"/>
+            android:icon="@drawable/hotel_ic"/>
     </group>
     <group android:id="@+id/sectionComemos"
         android:checkableBehavior="none">
         <item
             android:id="@+id/queComemos"
             android:title="@string/que_comemos"
-            android:icon="@mipmap/ic_launcher"/>
+            android:icon="@drawable/restaurant_ic"/>
     </group>
     <group android:id="@+id/sectionHacemos"
         android:checkableBehavior="none">
         <item
             android:id="@+id/queHacemos"
             android:title="¿Qué hacemos?"
-            android:icon="@mipmap/ic_launcher"/>
+            android:icon="@drawable/question_ic"/>
     </group>
     <group android:id="@+id/sectionCompramos"
         android:checkableBehavior="none">
         <item
             android:id="@+id/dondeCompramos"
             android:title="@string/donde_compramos"
-            android:icon="@mipmap/ic_launcher"/>
+            android:icon="@drawable/shopping_ic"/>
     </group>
 
     <group
@@ -35,6 +35,6 @@
         <item
             android:id="@+id/miPueblo"
             android:title="@string/mi_pueblo"
-            android:icon="@mipmap/ic_launcher"/>
+            android:icon="@drawable/town_ic"/>
     </group>
 </menu>

@@ -1,25 +1,18 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.AnimationUtil;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel> {
     private static final String TAG = HomeActivity.class.getName();
@@ -28,6 +21,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
 
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
+    private BottomNavigationView mBottomView;
+//    private HomeFragment mHome;
+//    private MapFragment mMap;
 
     @Override
     public int getLayout() {
@@ -55,23 +51,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         mNavMenu = binding.homeNavigationView;
 
         setupNavMenu();
-
-        startScreenAnimation(binding);
-
-        getCategoryDomain().getCategoriPlace("1", new Callback<TourismCategory>() {
-            @Override
-            public void onResponse(Call<TourismCategory> call, Response<TourismCategory> response) {
-                if (response.isSuccessful()) {
-                    //TODO: Store or update whatever happens here
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<TourismCategory> call, Throwable t) {
-                Log.d(TAG, "Error: ", t);
-            }
-        });
     }
 
     private void setupNavMenu() {
@@ -117,40 +96,41 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         drawerToggle.syncState();
     }
 
-    private void startScreenAnimation(final ActivityHomeBinding binding) {
-        startFadeInAnimation(binding.contentHome.ivLogo, AnimationUtil.LOGO_ANIMATION_INTERVAL, new Animation.AnimationListener() {
+    private void bottomNavigationSetup() {
+        mBottomView = getBinding().contentHome.bottomNavigation;
+        mBottomView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                binding.contentHome.ivLogo.setVisibility(View.VISIBLE);
-                startFadeInAnimation(binding.contentHome.ivHome, AnimationUtil.HOME_BACKGROUND_ANIMATION, new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        binding.contentHome.ivHome.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.bottomHome:
+                        //TODO: Load and create a fragment
+                        break;
+                    case R.id.bottomMap:
+                        //TODO: Load and create a fragment
+                        break;
+                }
+                return false;
             }
         });
     }
+
+//    private HomeFragment() {
+//        if (mHome != null) {
+//            return mHome;
+//        }
+//
+//        mHome = HomeFragment.getInstance();
+//        return mHome;
+//    }
+//
+//    private MapFragment() {
+//        if (mMap != null) {
+//            return mMap;
+//        }
+//
+//        mMap = MapFragment.getInstance();
+//        return mMap;
+//    }
 
     public void goCategoryActivity(@NonNull String categoryId) {
 //        goNextActivity(CategoryActivity.class)

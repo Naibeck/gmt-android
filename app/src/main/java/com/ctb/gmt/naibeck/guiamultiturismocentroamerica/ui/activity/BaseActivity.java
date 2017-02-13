@@ -6,14 +6,15 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 
+import com.android.annotations.NonNull;
+import com.android.annotations.Nullable;
+import android.support.annotation.LayoutRes;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.GmtClient;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.CategoryDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.AnimationUtil;
@@ -107,5 +108,15 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         Animation fadeIn = AnimationUtil.getFadeInAnimation(interval);
         fadeIn.setAnimationListener(listener);
         resourceId.setAnimation(fadeIn);
+    }
+
+    /**
+     * Will handle the replacement of a fragment in a view
+     * @param fragment a fragment to be replaced
+     */
+    public void replaceFragment(@NonNull @IdRes int view, @NonNull Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(view, fragment)
+                .commit();
     }
 }
