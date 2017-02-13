@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel> {
@@ -23,7 +24,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     private DrawerLayout mDrawerMenu;
     private BottomNavigationView mBottomView;
 //    private HomeFragment mHome;
-//    private MapFragment mMap;
+private MapFragment mMap;
 
     @Override
     public int getLayout() {
@@ -51,6 +52,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         mNavMenu = binding.homeNavigationView;
 
         setupNavMenu();
+        bottomNavigationSetup();
     }
 
     private void setupNavMenu() {
@@ -101,15 +103,16 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         mBottomView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+                int itemId = item.getItemId();
+                switch (itemId) {
                     case R.id.bottomHome:
                         //TODO: Load and create a fragment
                         break;
                     case R.id.bottomMap:
-                        //TODO: Load and create a fragment
+                        replaceFragment(R.id.mainContainer, getMapFragment());
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }
@@ -122,15 +125,15 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
 //        mHome = HomeFragment.getInstance();
 //        return mHome;
 //    }
-//
-//    private MapFragment() {
-//        if (mMap != null) {
-//            return mMap;
-//        }
-//
-//        mMap = MapFragment.getInstance();
-//        return mMap;
-//    }
+
+    private MapFragment getMapFragment() {
+        if (mMap != null) {
+            return mMap;
+        }
+
+        mMap = MapFragment.getInstance();
+        return mMap;
+    }
 
     public void goCategoryActivity(@NonNull String categoryId) {
 //        goNextActivity(CategoryActivity.class)

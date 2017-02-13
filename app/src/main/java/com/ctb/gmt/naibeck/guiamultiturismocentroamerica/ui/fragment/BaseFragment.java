@@ -40,6 +40,12 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
         return root;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initComponents();
+    }
+
     @LayoutRes
     public abstract int getLayout();
 
@@ -59,6 +65,10 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
         getFragmentManager().beginTransaction()
                 .replace(containerId, fragment)
                 .commit();
+    }
+
+    public void initComponents() {
+
     }
 
     public void addFragment(@IdRes int containerId, @NonNull Fragment fragment) {

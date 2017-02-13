@@ -2,6 +2,7 @@
     <string name="app_name">Guia Multiturismo Centroamerica</string>
     <string name="open_drawer">open_drawer</string>
     <string name="close_drawer">close_drawe</string>
+
     <string name="donde_quedamos">¿Dónde nos quedamos?</string>
     <string name="hoteles_hostales">Hoteles y Hostales</string>
     <string name="que_comemos">¿Qué comemos?</string>
@@ -21,6 +22,9 @@
     <string name="mi_pueblo">Mi Pueblo</string>
     <string name="fiestas_patronales">Fiestas Patronales</string>
     <string name="festivales">Festivales</string>
+
     <string name="home">Home</string>
     <string name="map">Map</string>
+
+    <string name="api_key">AIzaSyB_16JVF07a-YlMIkZ-dAdghOU3JZvt5-M</string>
 </resources>
