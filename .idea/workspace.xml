@@ -6,23 +6,19 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="MapFragment" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41273dd3-1748-4e5b-8bbb-a7d30baf4478" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_base_9_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_basement_9_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_maps_9_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_tasks_9_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/dexter_2_2_2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/HomeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java" />
     </list>
     <ignored path="gmt-android.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,12 +53,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+            <state relative-caret-position="338">
+              <caret line="137" column="17" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#1911#2997#0" expanded="true" />
                 <element signature="e#2996#2997#0" expanded="true" />
                 <element signature="e#3808#4404#0" expanded="true" />
@@ -75,8 +72,8 @@
       <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+            <state relative-caret-position="128">
+              <caret line="47" column="66" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#617#618#0" expanded="true" />
@@ -85,8 +82,8 @@
                 <element signature="e#745#746#0" expanded="true" />
                 <element signature="e#793#794#0" expanded="true" />
                 <element signature="e#820#821#0" expanded="true" />
-                <element signature="e#1130#1323#0" expanded="true" />
-                <element signature="e#1322#1323#0" expanded="true" />
+                <element signature="e#1204#1472#0" expanded="true" />
+                <element signature="e#1471#1472#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,6 +105,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="155" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="fragment_map.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,8 +133,18 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+            <state relative-caret-position="252">
+              <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiturismoApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -138,19 +157,6 @@
               <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="content_home.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_home.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -167,28 +173,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BaseFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="248">
+              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
               <folding>
-                <marker date="1487001895528" expanded="false" signature="79:119" ph="..." />
+                <marker date="1487006000766" expanded="false" signature="104:144" ph="..." />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_navigation_items.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main_navigation_items.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -444,6 +437,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="processDebugAndroidTestJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.karumi:dexter:2.2.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComKarumiDexter222Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1207,6 +1205,11 @@
                 <option name="name" value="processDebugAndroidTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.karumi:dexter:2.2.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComKarumiDexter222Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="processReleaseUnitTestJavaRes" />
               </ExternalTaskPojo>
@@ -1763,7 +1766,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$" value="4458087802230" />
-        <entry key="C:\Users\Trainee-Dev\Desktop\gmt-android" value="4455132512980" />
+        <entry key="C:\Users\Trainee-Dev\Desktop\gmt-android" value="4455134390731" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2184,7 +2187,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/utility/RouteUtility.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/api/GmtClient.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/api/service/CategoryService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/model/Socials.java" />
@@ -2197,17 +2199,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/utility/AnimationUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/main_navigation_items.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java" />
         <option value="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java" />
       </list>
     </option>
   </component>
@@ -2246,28 +2249,7 @@
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gmt-android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gmt-android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="ProjectPane">
         <subPane />
@@ -2279,8 +2261,9 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="device.picker.selection" value="Nexus_5_Lollipop" />
-    <property name="SearchEverywhereHistoryKey" value="mani&#9;FILE&#9;file://C:/Users/Trainee-Dev/Desktop/gmt-android/app/src/main/AndroidManifest.xml&#10;Base&#9;FILE&#9;file://C:/Users/Trainee-Dev/Desktop/gmt-android/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java&#10;MAni&#9;FILE&#9;file:///home/naibeck/gmt-android/app/src/main/AndroidManifest.xml&#10;Touri&#9;FILE&#9;file:///home/naibeck/gmt-android/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/model/TourismCategory.java" />
+    <property name="SearchEverywhereHistoryKey" value="BaseAc&#9;FILE&#9;file://C:/Users/Trainee-Dev/Desktop/gmt-android/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java&#10;Applica&#9;FILE&#9;file://C:/Users/Trainee-Dev/Desktop/gmt-android/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java&#10;mani&#9;FILE&#9;file://C:/Users/Trainee-Dev/Desktop/gmt-android/app/src/main/AndroidManifest.xml&#10;Base&#9;FILE&#9;file://C:/Users/Trainee-Dev/Desktop/gmt-android/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java&#10;MAni&#9;FILE&#9;file:///home/naibeck/gmt-android/app/src/main/AndroidManifest.xml&#10;Touri&#9;FILE&#9;file:///home/naibeck/gmt-android/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/model/TourismCategory.java" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
+    <property name="com.developerphil.adbidea.selecteddevices" value="4b38c4f6" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -2651,7 +2634,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30827066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30827066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2685,6 +2668,7 @@
         <state relative-caret-position="3968">
           <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#1911#2997#0" expanded="true" />
             <element signature="e#2996#2997#0" expanded="true" />
             <element signature="e#3808#4404#0" expanded="true" />
@@ -2760,7 +2744,7 @@
         <state relative-caret-position="868">
           <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding>
-            <marker date="1487001895528" expanded="false" signature="79:119" ph="..." />
+            <marker date="1487006000766" expanded="false" signature="104:144" ph="..." />
           </folding>
         </state>
       </provider>
@@ -2770,6 +2754,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#1911#2997#0" expanded="true" />
             <element signature="e#2996#2997#0" expanded="true" />
             <element signature="e#3808#4404#0" expanded="true" />
@@ -2823,20 +2808,13 @@
         <state relative-caret-position="868">
           <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
           <folding>
-            <marker date="1487001895528" expanded="false" signature="79:119" ph="..." />
+            <marker date="1487006000766" expanded="false" signature="104:144" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/api.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/utility/RouteUtility.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/api/GmtClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -2921,16 +2899,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="119" column="26" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main_navigation_items.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -2951,16 +2919,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <marker date="1487001895528" expanded="false" signature="79:119" ph="..." />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml">
@@ -3007,14 +2965,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -3023,10 +2973,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/MapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        <state relative-caret-position="128">
+          <caret line="47" column="66" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#617#618#0" expanded="true" />
@@ -3035,21 +2993,50 @@
             <element signature="e#745#746#0" expanded="true" />
             <element signature="e#793#794#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#1130#1323#0" expanded="true" />
-            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1204#1472#0" expanded="true" />
+            <element signature="e#1471#1472#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+        <state relative-caret-position="338">
+          <caret line="137" column="17" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#1911#2997#0" expanded="true" />
             <element signature="e#2996#2997#0" expanded="true" />
             <element signature="e#3808#4404#0" expanded="true" />
             <element signature="e#4403#4404#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/MultiturismoApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/activity/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="155" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctb/gmt/naibeck/guiamultiturismocentroamerica/ui/fragment/BaseFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+          <folding>
+            <marker date="1487006000766" expanded="false" signature="104:144" ph="..." />
           </folding>
         </state>
       </provider>

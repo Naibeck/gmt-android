@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.karumi.dexter.Dexter;
 
 public class MultiturismoApplication extends Application {
     private static final String TAG = MultiturismoApplication.class.getName();
@@ -16,6 +17,7 @@ public class MultiturismoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        Dexter.initialize(this);
     }
 
     public Gson getGson() {

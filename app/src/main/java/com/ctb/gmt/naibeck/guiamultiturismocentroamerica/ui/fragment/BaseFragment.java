@@ -1,7 +1,9 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -16,8 +18,6 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 
 /**
  * Handles the base logic for the rest of fragments.
@@ -79,5 +79,11 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
 
     public @ColorInt int getColor(@ColorRes int resourceColor) {
         return ContextCompat.getColor(getContext(), resourceColor);
+    }
+
+    public boolean isLocationPermissionGranted() {
+        return
+                ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 }

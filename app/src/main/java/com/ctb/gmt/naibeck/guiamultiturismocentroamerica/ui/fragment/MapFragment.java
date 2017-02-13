@@ -34,12 +34,19 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, Void> {
     @Override
     public void initComponents() {
         super.initComponents();
+        setupMapFragment();
+    }
+
+
+    private void setupMapFragment() {
         mSupportMapFragment = new SupportMapFragment();
         replaceFragment(R.id.mapContainer, mSupportMapFragment);
         mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
-                //TODO: Add my current location and add makers
+                if (isLocationPermissionGranted()) {
+                    //TODO: Add my current location and add makers
+                }
             }
         });
     }
