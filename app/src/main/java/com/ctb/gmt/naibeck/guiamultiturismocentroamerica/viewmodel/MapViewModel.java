@@ -3,7 +3,6 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel;
 import android.databinding.BaseObservable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
@@ -18,23 +17,23 @@ public class MapViewModel extends BaseObservable {
     private static MapViewModel sInstance;
 
     private MapFragment mFragment;
-    private TextView.OnEditorActionListener mActionListener;
+    private GmtSharedPreferences mSharedPreferences;
 
     private String mSearchContent;
 
     public static MapViewModel getInstance(@NonNull MapFragment fragment,
-                                           @NonNull TextView.OnEditorActionListener actionListener) {
+                                           @NonNull GmtSharedPreferences preferences) {
         if (sInstance != null) {
             return sInstance;
         }
 
-        sInstance = new MapViewModel(fragment, actionListener);
+        sInstance = new MapViewModel(fragment, preferences);
         return sInstance;
     }
 
-    public MapViewModel(MapFragment mFragment, TextView.OnEditorActionListener mActionListener) {
+    public MapViewModel(MapFragment mFragment, GmtSharedPreferences mSharedPreferences) {
         this.mFragment = mFragment;
-        this.mActionListener = mActionListener;
+        this.mSharedPreferences = mSharedPreferences;
     }
 
     public String getSearchContent() {
@@ -46,9 +45,9 @@ public class MapViewModel extends BaseObservable {
     }
 
     public LatLng getLatLngFromUser() {
-        if (getGmtPreferences().getLastStoredLocation() != null) {
-            return new LatLng(getGmtPreferences().getLastStoredLocation().getLatitude(),
-                    getGmtPreferences().getLastStoredLocation().getLongitude());
+        if (mSharedPreferences.getLastStoredLocation() != null) {
+            return new LatLng(mSharedPreferences.getLastStoredLocation().getLatitude(),
+                    mSharedPreferences.getLastStoredLocation().getLongitude());
         }
         return null;
     }
@@ -59,9 +58,5 @@ public class MapViewModel extends BaseObservable {
 
     public void displayMessage() {
         Toast.makeText(mFragment.getContext(), getSearchContent(), Toast.LENGTH_SHORT).show();
-    }
-
-    private GmtSharedPreferences getGmtPreferences() {
-        return GmtSharedPreferences.getInstance(mFragment.getContext());
     }
 }
