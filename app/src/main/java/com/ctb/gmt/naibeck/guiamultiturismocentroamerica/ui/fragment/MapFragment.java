@@ -2,6 +2,10 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentMapBinding;
@@ -13,7 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> {
+public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> implements TextView.OnEditorActionListener {
     private static final String TAG = MapFragment.class.getName();
 
     private static final float ZOOM_LEVEL = 15.0f;
@@ -29,7 +33,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
 
     @Override
     public MapViewModel getViewModel() {
-        return MapViewModel.getInstance(this);
+        return MapViewModel.getInstance(this, this);
     }
 
 
@@ -41,6 +45,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
     @Override
     public void initComponents() {
         super.initComponents();
+        getBinding().searchTextBar.setOnEditorActionListener(this);
         setupMapFragment();
     }
 
@@ -55,6 +60,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
                     if (isLocationPermissionGranted()) {
                         googleMap.setMyLocationEnabled(true);
                     }
+                    googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getViewModel().getLatLngFromUser(),
                             ZOOM_LEVEL));
                 }
@@ -65,5 +71,15 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
     private MarkerOptions markersSetup(@NonNull LatLng markerPosition, @DrawableRes int resource) {
         return new MarkerOptions().icon(getViewModel().getIcon(resource))
                 .position(markerPosition);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        if (i == EditorInfo.IME_ACTION_SEARCH) {
+            //TODO: Change this method to submit a search
+            getViewModel().displayMessage();
+            return true;
+        }
+        return false;
     }
 }

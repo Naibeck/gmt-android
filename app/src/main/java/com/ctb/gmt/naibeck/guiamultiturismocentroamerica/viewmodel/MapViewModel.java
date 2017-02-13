@@ -3,6 +3,8 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel;
 import android.databinding.BaseObservable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.GmtSharedPreferences;
@@ -16,18 +18,31 @@ public class MapViewModel extends BaseObservable {
     private static MapViewModel sInstance;
 
     private MapFragment mFragment;
+    private TextView.OnEditorActionListener mActionListener;
 
-    public static MapViewModel getInstance(@NonNull MapFragment fragment) {
+    private String mSearchContent;
+
+    public static MapViewModel getInstance(@NonNull MapFragment fragment,
+                                           @NonNull TextView.OnEditorActionListener actionListener) {
         if (sInstance != null) {
             return sInstance;
         }
 
-        sInstance = new MapViewModel(fragment);
+        sInstance = new MapViewModel(fragment, actionListener);
         return sInstance;
     }
 
-    public MapViewModel(MapFragment mFragment) {
+    public MapViewModel(MapFragment mFragment, TextView.OnEditorActionListener mActionListener) {
         this.mFragment = mFragment;
+        this.mActionListener = mActionListener;
+    }
+
+    public String getSearchContent() {
+        return mSearchContent;
+    }
+
+    public void setSearchContent(String searchContent) {
+        this.mSearchContent = searchContent;
     }
 
     public LatLng getLatLngFromUser() {
@@ -40,6 +55,10 @@ public class MapViewModel extends BaseObservable {
 
     public BitmapDescriptor getIcon(@DrawableRes int drawableResource) {
         return BitmapDescriptorFactory.fromResource(drawableResource);
+    }
+
+    public void displayMessage() {
+        Toast.makeText(mFragment.getContext(), getSearchContent(), Toast.LENGTH_SHORT).show();
     }
 
     private GmtSharedPreferences getGmtPreferences() {
