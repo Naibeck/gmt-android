@@ -79,6 +79,12 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         super.onStop();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mLocationDomain.removeLocationUpdates();
+    }
+
     private void setupNavMenu() {
         mNavMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -207,9 +213,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         Log.d(TAG, "Connection succeed");
-        while (!isLocationPermissionGranted()) {
-
-        }
         if (isLocationPermissionGranted()) { //Check if permission were granted on Android 6 >
             storeLocation(mLocationDomain.getLastKnownLocation());
             mLocationDomain.startLocationUpdates();

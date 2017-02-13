@@ -70,6 +70,10 @@ public class LocationDomain implements GoogleApiClient.ConnectionCallbacks, Goog
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
     }
 
+    public void removeLocationUpdates() {
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+    }
+
     private LocationRequest getRequest() {
         if (mLocationRequest != null) {
             return mLocationRequest;
