@@ -1,6 +1,9 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -29,7 +32,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
 
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
-    private BottomNavigationView mBottomView;
     private MapFragment mMap;
     //    private HomeFragment mHome;
 
@@ -68,6 +70,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     protected void onStart() {
         getLocationDomain().handleOnStart();
         super.onStart();
+
     }
 
     @Override
@@ -120,7 +123,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     }
 
     private void bottomNavigationSetup() {
-        mBottomView = getBinding().contentHome.bottomNavigation;
+        BottomNavigationView mBottomView = getBinding().contentHome.bottomNavigation;
         mBottomView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -130,6 +133,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
                         //TODO: Load and create a fragment
                         break;
                     case R.id.bottomMap:
+                        storeLocation(mLocationDomain.getLastKnownLocation());
                         replaceFragment(R.id.mainContainer, getMapFragment());
                         break;
                 }
@@ -174,17 +178,41 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
      * Will store the last know location to preferences; this will allow to use that location without asking
      * for it again
      */
-    private void storeLocation() {
-        if (mLocationDomain.getLastKnownLocation() != null) {
-            getGmtPreferences().putLastStoredLocation(mLocationDomain.getLastKnownLocation());
+    private void storeLocation(@NonNull Location location) {
+        if (isProviderEnabled()) {
+            getGmtPreferences().putLastStoredLocation(location);
+        } else {
+            //Launch settings to enable provider
+            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
+    }
+
+    /**
+     * Will launch settings screen in case Location providers are turned off
+     * @return true if provider is enabled false if is not
+     */
+    public boolean isProviderEnabled() {
+        int locationMode;
+
+        try {
+            locationMode = Settings.Secure.getInt(getContentResolver(), Settings.Secure.LOCATION_MODE);
+        } catch (Settings.SettingNotFoundException e) {
+            Log.d(TAG, "Exception: ", e);
+            return false;
+        }
+
+        return locationMode != Settings.Secure.LOCATION_MODE_OFF;
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         Log.d(TAG, "Connection succeed");
+        while (!isLocationPermissionGranted()) {
+
+        }
         if (isLocationPermissionGranted()) { //Check if permission were granted on Android 6 >
-            storeLocation();
+            storeLocation(mLocationDomain.getLastKnownLocation());
+            mLocationDomain.startLocationUpdates();
         }
     }
 
@@ -196,5 +224,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d(TAG, "Connection failed: " + connectionResult.getErrorMessage());
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        storeLocation(location);
     }
 }

@@ -19,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.GmtSharedPreferences;
+
 /**
  * Handles the base logic for the rest of fragments.
  *
@@ -85,5 +87,9 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
         return
                 ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                         && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public GmtSharedPreferences getGmtPreferences() {
+        return GmtSharedPreferences.getInstance(getContext());
     }
 }

@@ -1,15 +1,22 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentMapBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MapViewModel;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends BaseFragment<FragmentMapBinding, Void> {
+public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> {
     private static final String TAG = MapFragment.class.getName();
 
-    private SupportMapFragment mSupportMapFragment;
+    private static final float ZOOM_LEVEL = 15.0f;
 
     public static MapFragment getInstance() {
         return new MapFragment();
@@ -21,14 +28,14 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, Void> {
     }
 
     @Override
-    public Void getViewModel() {
-        return null;
+    public MapViewModel getViewModel() {
+        return MapViewModel.getInstance(this);
     }
 
 
     @Override
     public void setViewModelToBinding() {
-
+        getBinding().setViewModel(getViewModel());
     }
 
     @Override
@@ -39,15 +46,23 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, Void> {
 
 
     private void setupMapFragment() {
-        mSupportMapFragment = new SupportMapFragment();
+        SupportMapFragment mSupportMapFragment = new SupportMapFragment();
         replaceFragment(R.id.mapContainer, mSupportMapFragment);
         mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
-                if (isLocationPermissionGranted()) {
-                    //TODO: Add my current location and add makers
+                if (getGmtPreferences().getLastStoredLocation() != null) {
+                    googleMap.addMarker(new MarkerOptions().icon(getViewModel().getIcon(R.drawable.home_ic))
+                            .position(getViewModel().getLatLngFromUser()));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getViewModel().getLatLngFromUser(),
+                            ZOOM_LEVEL));
                 }
             }
         });
+    }
+
+    private MarkerOptions markersSetup(@NonNull LatLng markerPosition, @DrawableRes int resource) {
+        return new MarkerOptions().icon(getViewModel().getIcon(resource))
+                .position(markerPosition);
     }
 }
