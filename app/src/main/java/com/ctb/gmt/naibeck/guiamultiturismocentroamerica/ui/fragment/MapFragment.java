@@ -52,8 +52,9 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 if (getGmtPreferences().getLastStoredLocation() != null) {
-                    googleMap.addMarker(new MarkerOptions().icon(getViewModel().getIcon(R.drawable.home_ic))
-                            .position(getViewModel().getLatLngFromUser()));
+                    if (isLocationPermissionGranted()) {
+                        googleMap.setMyLocationEnabled(true);
+                    }
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getViewModel().getLatLngFromUser(),
                             ZOOM_LEVEL));
                 }
