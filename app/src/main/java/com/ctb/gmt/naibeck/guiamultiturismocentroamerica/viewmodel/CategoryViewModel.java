@@ -35,7 +35,6 @@ public class CategoryViewModel extends BaseObservable {
         if (sInstance != null) {
             return sInstance;
         }
-
         sInstance = new CategoryViewModel(fragment, preferences, listener, domain);
         return sInstance;
     }
@@ -82,5 +81,11 @@ public class CategoryViewModel extends BaseObservable {
 
     public interface CategoryListListener<T> {
         void onDataLoad(T item);
+    }
+
+    public void onDestroyInstance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
     }
 }

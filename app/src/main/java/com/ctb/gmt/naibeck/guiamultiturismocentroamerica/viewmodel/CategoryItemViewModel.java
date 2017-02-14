@@ -1,6 +1,9 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 
 /**
  * This will be the representation of a RecyclerView containing another RecyclerView
@@ -8,14 +11,18 @@ import android.databinding.BaseObservable;
 public class CategoryItemViewModel extends BaseObservable {
     private static final String TAG = CategoryItemViewModel.class.getName();
 
-    private static CategoryItemViewModel sInstance;
 
-    public static CategoryItemViewModel getInstance() {
-        if (sInstance != null) {
-            return sInstance;
-        }
+    private CategoryPlace mCategoryPlace;
 
-        sInstance = new CategoryItemViewModel();
-        return sInstance;
+    private String mCategoryName;
+
+    public CategoryItemViewModel(CategoryPlace mCategoryPlace) {
+        this.mCategoryPlace = mCategoryPlace;
+        this.mCategoryName = mCategoryPlace.getName();
+    }
+
+    @Bindable
+    public String getCategoryName() {
+        return mCategoryName;
     }
 }
