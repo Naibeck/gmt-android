@@ -19,11 +19,11 @@ import android.widget.Toast;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.domain.LocationDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.HomeFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel;
 import com.google.android.gms.common.ConnectionResult;
 
-public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewModel>
+public class HomeActivity extends BaseActivity<ActivityHomeBinding, Void>
         implements LocationDomain.LocationDomainListener {
 
     private static final String TAG = HomeActivity.class.getName();
@@ -33,7 +33,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
     private MapFragment mMap;
-    //    private HomeFragment mHome;
+    private HomeFragment mHome;
 
     private LocationDomain mLocationDomain;
 
@@ -43,13 +43,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
     }
 
     @Override
-    public HomeViewModel getViewModel() {
-        return new HomeViewModel();
+    public Void getViewModel() {
+        return null;
     }
 
     @Override
     public void setViewModelToBinding() {
-        getBinding().setViewModel(getViewModel());
+
     }
 
     @Override
@@ -64,11 +64,14 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
 
         setupNavMenu();
         bottomNavigationSetup();
+
+        replaceFragment(R.id.mainContainer, getHomeFragment());
     }
 
     @Override
     protected void onStart() {
         getLocationDomain().handleOnStart();
+        getHomeFragment();
         super.onStart();
 
     }
@@ -136,7 +139,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
                 int itemId = item.getItemId();
                 switch (itemId) {
                     case R.id.bottomHome:
-                        //TODO: Load and create a fragment
+                        replaceFragment(R.id.mainContainer, getHomeFragment());
                         break;
                     case R.id.bottomMap:
                         storeLocation(mLocationDomain.getLastKnownLocation());
@@ -148,14 +151,14 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeViewMode
         });
     }
 
-//    private HomeFragment() {
-//        if (mHome != null) {
-//            return mHome;
-//        }
-//
-//        mHome = HomeFragment.getInstance();
-//        return mHome;
-//    }
+    private HomeFragment getHomeFragment() {
+        if (mHome != null) {
+            return mHome;
+        }
+
+        mHome = HomeFragment.getInstance();
+        return mHome;
+    }
 
     private MapFragment getMapFragment() {
         if (mMap != null) {
