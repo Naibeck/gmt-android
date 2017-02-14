@@ -29,6 +29,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     private static final String TAG = MainActivity.class.getName();
 
     public static final String SELECTED_CATEGORY = "selectedCategory";
+    private static final String WHAT_WE_EAT = "1";
+    private static final String WHERE_WE_STAY = "3";
+    private static final String WHAT_WE_DO = "2";
 
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
@@ -94,7 +97,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.dondeQuedamos:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        goCategoryActivity(WHERE_WE_STAY);
                         break;
                     case R.id.dondeCompramos:
                         Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
@@ -103,10 +106,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
                         Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.queComemos:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        goCategoryActivity(WHAT_WE_EAT);
                         break;
                     case R.id.queHacemos:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
+                        goCategoryActivity(WHAT_WE_DO);
                         break;
                 }
                 return false;
@@ -170,8 +173,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     }
 
     public void goCategoryActivity(@NonNull String categoryId) {
-//        goNextActivity(CategoryActivity.class)
-//                .putExtra(SELECTED_CATEGORY, categoryId);
+        startActivity(goNextActivity(CategoryActivity.class)
+                .putExtra(SELECTED_CATEGORY, categoryId));
     }
 
     private LocationDomain getLocationDomain() {

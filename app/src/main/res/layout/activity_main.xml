@@ -33,13 +33,6 @@
             <include
                 android:id="@+id/contentHome"
                 layout="@layout/content_home" />
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/homeContainer"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
-
         </android.support.design.widget.CoordinatorLayout>
 
         <!--Drawer menu-->
