@@ -71,7 +71,9 @@ public class LocationDomain implements GoogleApiClient.ConnectionCallbacks, Goog
     }
 
     public void removeLocationUpdates() {
-        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        if (mGoogleApiClient.isConnected()) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        }
     }
 
     private LocationRequest getRequest() {

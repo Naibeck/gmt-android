@@ -23,10 +23,10 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.HomeFragmen
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.google.android.gms.common.ConnectionResult;
 
-public class HomeActivity extends BaseActivity<ActivityHomeBinding, Void>
+public class MainActivity extends BaseActivity<ActivityHomeBinding, Void>
         implements LocationDomain.LocationDomainListener {
 
-    private static final String TAG = HomeActivity.class.getName();
+    private static final String TAG = MainActivity.class.getName();
 
     public static final String SELECTED_CATEGORY = "selectedCategory";
 
@@ -39,7 +39,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, Void>
 
     @Override
     public int getLayout() {
-        return R.layout.activity_home;
+        return R.layout.activity_main;
     }
 
     @Override
