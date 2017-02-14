@@ -91,6 +91,10 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
                         && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
+    public Intent goNextActivity(@com.android.annotations.NonNull Class<?> activity) {
+        return new Intent(getContext(), activity);
+    }
+
     public GmtSharedPreferences getGmtPreferences() {
         return GmtSharedPreferences.getInstance(getContext());
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewModel"
@@ -15,13 +15,18 @@
         android:paddingRight="@dimen/activity_horizontal_margin">
 
         <TextView
-            android:onClick="@{viewModel.clickTest}"
             android:text="@{viewModel.categoryName}"
             style="@style/CategoryTextView" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/placeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/places_item"/>
+
         <TextView
             style="@style/ActionTextView"
-            android:layout_gravity="end"
+            android:layout_gravity="end|top"
             android:text="@string/see_more" />
 
     </LinearLayout>

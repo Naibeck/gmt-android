@@ -11,13 +11,15 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 public class CategoryItemViewModel extends BaseObservable {
     private static final String TAG = CategoryItemViewModel.class.getName();
 
-
     private CategoryPlace mCategoryPlace;
+    private PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener mPlaceItemClickListener;
 
     private String mCategoryName;
 
-    public CategoryItemViewModel(CategoryPlace mCategoryPlace) {
+    public CategoryItemViewModel(CategoryPlace mCategoryPlace,
+                                 PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener placeItemClickListener) {
         this.mCategoryPlace = mCategoryPlace;
+        this.mPlaceItemClickListener = placeItemClickListener;
         this.mCategoryName = mCategoryPlace.getName();
     }
 
