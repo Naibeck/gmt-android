@@ -18,7 +18,7 @@
         android:checkableBehavior="none">
         <item
             android:id="@+id/queHacemos"
-            android:title="¿Qué hacemos?"
+            android:title="@string/que_hacemos"
             android:icon="@drawable/question_ic"/>
     </group>
     <group android:id="@+id/sectionCompramos"

@@ -29,9 +29,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     private static final String TAG = MainActivity.class.getName();
 
     public static final String SELECTED_CATEGORY = "selectedCategory";
-    private static final String WHAT_WE_EAT = "1";
-    private static final String WHERE_WE_STAY = "3";
-    private static final String WHAT_WE_DO = "2";
+    public static final String WHAT_WE_EAT = "1";
+    public static final String WHERE_WE_STAY = "3";
+    public static final String WHAT_WE_DO = "2";
 
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
