@@ -22,9 +22,10 @@
             android:id="@+id/placeList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/places_item"/>
+            tools:listitem="@layout/item_places"/>
 
         <TextView
+            android:layout_marginTop="@dimen/view_vertical_margin"
             style="@style/ActionTextView"
             android:layout_gravity="end|top"
             android:text="@string/see_more" />

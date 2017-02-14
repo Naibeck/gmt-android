@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.PlacesItemBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ItemPlacesBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceItemViewModel;
 
@@ -31,7 +31,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.places_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_places, parent, false);
         return new ViewHolder(view);
     }
 
@@ -47,7 +47,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public PlacesItemBinding mBinding;
+        public ItemPlacesBinding mBinding;
 
         public ViewHolder(View itemView) {
             super(itemView);
