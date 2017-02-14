@@ -21,7 +21,7 @@ import com.android.annotations.NonNull;
 import com.android.annotations.Nullable;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.GmtClient;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.CategoryDomain;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.domain.LocationDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.AnimationUtil;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.GmtSharedPreferences;
 import com.karumi.dexter.Dexter;

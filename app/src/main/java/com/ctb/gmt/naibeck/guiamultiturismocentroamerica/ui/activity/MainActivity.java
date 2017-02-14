@@ -17,13 +17,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityHomeBinding;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.domain.LocationDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityMainBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.HomeFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
 import com.google.android.gms.common.ConnectionResult;
 
-public class MainActivity extends BaseActivity<ActivityHomeBinding, Void>
+public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         implements LocationDomain.LocationDomainListener {
 
     private static final String TAG = MainActivity.class.getName();
@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity<ActivityHomeBinding, Void>
     }
 
     @Override
-    public void initComponents(final ActivityHomeBinding binding) {
+    public void initComponents(final ActivityMainBinding binding) {
         mDrawerMenu = binding.homeDrawerLayout;
         mNavMenu = binding.homeNavigationView;
 

@@ -12,15 +12,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class CategoryDomain {
+    private static final String TAG = CategoryDomain.class.getName();
 
-    private GmtClient mClient;
+    private static CategoryDomain sInstance;
 
-    public CategoryDomain(GmtClient mClient) {
-        this.mClient = mClient;
+    private GmtClient mGmtClient;
+
+    public static CategoryDomain getInstance(@NonNull GmtClient client) {
+        if (sInstance != null) {
+            return sInstance;
+        }
+
+        sInstance = new CategoryDomain(client);
+        return sInstance;
     }
 
+    public CategoryDomain(GmtClient mGmtClient) {
+        this.mGmtClient = mGmtClient;
+    }
     public void getCategoriPlace(@NonNull String categoryId, @NonNull Callback<TourismCategory> callback) {
-        Call<TourismCategory> call = mClient.getCategoryService().getCategory(categoryId);
+        Call<TourismCategory> call = mGmtClient.getCategoryService().getCategory(categoryId);
         call.enqueue(callback);
     }
 
