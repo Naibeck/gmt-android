@@ -20,6 +20,9 @@ public class Places implements Parcelable {
     @SerializedName("placeAdress")
     private String mAddress;
 
+    @SerializedName("ubicacionLogo")
+    private String mLogo;
+
     @SerializedName("placeLatitud")
     private String mLatitude;
 
@@ -61,6 +64,14 @@ public class Places implements Parcelable {
         this.mAddress = mAddress;
     }
 
+    public String getLogo() {
+        return mLogo;
+    }
+
+    public void setLogo(String mLogo) {
+        this.mLogo = mLogo;
+    }
+
     public String getLatitude() {
         return mLatitude;
     }
@@ -85,6 +96,7 @@ public class Places implements Parcelable {
         this.mSocialList = mSocialList;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -96,6 +108,7 @@ public class Places implements Parcelable {
         dest.writeString(this.mName);
         dest.writeString(this.mDescription);
         dest.writeString(this.mAddress);
+        dest.writeString(this.mLogo);
         dest.writeString(this.mLatitude);
         dest.writeString(this.mLongitude);
         dest.writeTypedList(this.mSocialList);
@@ -109,12 +122,13 @@ public class Places implements Parcelable {
         this.mName = in.readString();
         this.mDescription = in.readString();
         this.mAddress = in.readString();
+        this.mLogo = in.readString();
         this.mLatitude = in.readString();
         this.mLongitude = in.readString();
         this.mSocialList = in.createTypedArrayList(Socials.CREATOR);
     }
 
-    public static final Parcelable.Creator<Places> CREATOR = new Parcelable.Creator<Places>() {
+    public static final Creator<Places> CREATOR = new Creator<Places>() {
         @Override
         public Places createFromParcel(Parcel source) {
             return new Places(source);
@@ -133,6 +147,7 @@ public class Places implements Parcelable {
                 ", mName='" + mName + '\'' +
                 ", mDescription='" + mDescription + '\'' +
                 ", mAddress='" + mAddress + '\'' +
+                ", mLogo='" + mLogo + '\'' +
                 ", mLatitude='" + mLatitude + '\'' +
                 ", mLongitude='" + mLongitude + '\'' +
                 ", mSocialList=" + mSocialList +

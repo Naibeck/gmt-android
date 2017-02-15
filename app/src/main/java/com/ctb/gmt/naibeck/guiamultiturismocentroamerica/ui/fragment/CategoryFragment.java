@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
@@ -79,6 +80,6 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
 
     @Override
     public void onHeaderClick(@NonNull CategoryPlace category) {
-        Toast.makeText(getContext(), category.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), category.toString(), Toast.LENGTH_LONG).show();
     }
 }
