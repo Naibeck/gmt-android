@@ -8,16 +8,20 @@ import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentCategoryBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.CategoryAdapter;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.HeaderCategoryAdapter;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.CategoryHeaderItemViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.CategoryViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceItemViewModel;
 
 public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, CategoryViewModel>
         implements CategoryViewModel.CategoryListListener<TourismCategory>,
-        PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener<Places> {
+        PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener<Places>,
+        CategoryHeaderItemViewModel.OnHeaderClickListener<CategoryPlace> {
     private static final String TAG = CategoryFragment.class.getName();
 
     public static CategoryFragment getInstance(@NonNull String categoryId) {
@@ -49,6 +53,8 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
         String mCategoryId = getArguments().getString(MainActivity.SELECTED_CATEGORY);
         RecyclerView mCategoryRecycler = getBinding().categoryRecycler;
         mCategoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        getBinding().categoryName.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
         if (mCategoryId != null) {
             getViewModel().loadData(mCategoryId);
         }
@@ -57,6 +63,7 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     @Override
     public void onDataLoad(TourismCategory item) {
         getBinding().categoryRecycler.setAdapter(new CategoryAdapter(getContext(), item.getCategoryPlaceList(), this));
+        getBinding().categoryName.setAdapter(new HeaderCategoryAdapter(getContext(), item.getCategoryPlaceList(), this));
     }
 
     @Override
@@ -68,5 +75,10 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     @Override
     public void onItemClick(Places item) {
         Toast.makeText(getContext(), item.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onHeaderClick(@NonNull CategoryPlace category) {
+        Toast.makeText(getContext(), category.getName(), Toast.LENGTH_SHORT).show();
     }
 }

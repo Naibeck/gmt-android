@@ -13,6 +13,14 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/categoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_category_header"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/categoryName"
             android:id="@+id/categoryRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

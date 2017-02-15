@@ -12,6 +12,8 @@ import retrofit2.http.PATCH;
 import retrofit2.http.Path;
 
 public interface CategoryService {
-    @GET("ubicacion/categoria/{id_categoria}")
+    int LIMIT_QUANTITY = 5;
+
+    @GET("ubicacion/categoria/{id_categoria}/" + LIMIT_QUANTITY)
     Call<TourismCategory> getCategory(@Path("id_categoria") @NonNull String idCategory);
 }
