@@ -27,8 +27,7 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
         CategoryHeaderItemViewModel.OnHeaderClickListener<CategoryPlace> {
     private static final String TAG = CategoryFragment.class.getName();
 
-    public static final String TYPE_ID = "typeId";
-    public static final String TYPE_NAME = "typeName";
+    public static final String CATEGORY_PLACE = "categoryPlace";
 
     public static CategoryFragment getInstance(@NonNull String categoryId) {
         CategoryFragment fragment = new CategoryFragment();
@@ -95,7 +94,6 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
 
     private void showPlacesList(CategoryPlace item) {
         getContext().startActivity(goNextActivity(PlaceListActivity.class)
-                .putExtra(TYPE_NAME, item.getName())
-                .putExtra(TYPE_ID, item.getId()));
+                .putExtra(CATEGORY_PLACE, item));
     }
 }

@@ -4,11 +4,14 @@ import android.support.v7.widget.Toolbar;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityPlaceListBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.CategoryFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceListViewModel;
 
 public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, PlaceListViewModel> {
     private static final String TAG = PlaceListActivity.class.getName();
+
+    private CategoryPlace mCategoryPlace;
 
     @Override
     public int getLayout() {
@@ -38,9 +41,16 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
     @Override
     public void initComponents(ActivityPlaceListBinding binding) {
         super.initComponents(binding);
-        String title = getIntent().getStringExtra(CategoryFragment.TYPE_NAME);
-        String categoryId = getIntent().getStringExtra(CategoryFragment.TYPE_ID);
 
-        setTitle(title);
+        setTitle(getCategoryPlace().getName());
+    }
+
+    private CategoryPlace getCategoryPlace() {
+        if (mCategoryPlace != null) {
+            return mCategoryPlace;
+        }
+
+        mCategoryPlace = getIntent().getParcelableExtra(CategoryFragment.CATEGORY_PLACE);
+        return mCategoryPlace;
     }
 }
