@@ -21,13 +21,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private Context mContext;
     private List<CategoryPlace> mCategoryPlaces;
+    private CategoryItemViewModel.CategoryItemViewModelListener mCategoryItemViewModelListener;
     private PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener mPlaceItemClickListener;
 
     public CategoryAdapter(Context mContext,
                            List<CategoryPlace> mCategoryPlaces,
+                           CategoryItemViewModel.CategoryItemViewModelListener mCategoryItemViewModelListener,
                            PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener mPlaceItemClickListener) {
         this.mContext = mContext;
         this.mCategoryPlaces = mCategoryPlaces;
+        this.mCategoryItemViewModelListener = mCategoryItemViewModelListener;
         this.mPlaceItemClickListener = mPlaceItemClickListener;
     }
 
@@ -42,7 +45,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         CategoryPlace categoryPlace = mCategoryPlaces.get(position);
         RecyclerView placeList = holder.mBinding.placeList;
 
-        holder.mBinding.setViewModel(new CategoryItemViewModel(categoryPlace, mPlaceItemClickListener));
+        holder.mBinding.setViewModel(new CategoryItemViewModel(categoryPlace, mCategoryItemViewModelListener));
 
         placeList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         placeList.setAdapter(new PlaceAdapter(mContext, categoryPlace.getPlaceList(), mPlaceItemClickListener));

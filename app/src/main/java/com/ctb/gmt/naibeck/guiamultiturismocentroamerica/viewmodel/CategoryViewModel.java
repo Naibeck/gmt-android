@@ -62,7 +62,7 @@ public class CategoryViewModel extends BaseObservable {
 
     public void loadData(@NonNull String categoryId) {
         setIsVisible(View.VISIBLE);
-        mCategoryDomain.getCategoriPlace(categoryId, new Callback<TourismCategory>() {
+        mCategoryDomain.getCategoryPlace(categoryId, new Callback<TourismCategory>() {
             @Override
             public void onResponse(Call<TourismCategory> call, Response<TourismCategory> response) {
                 if (response.isSuccessful()) {
@@ -79,13 +79,13 @@ public class CategoryViewModel extends BaseObservable {
         });
     }
 
-    public interface CategoryListListener<T> {
-        void onDataLoad(T item);
-    }
-
     public void onDestroyInstance() {
         if (sInstance != null) {
             sInstance = null;
         }
+    }
+
+    public interface CategoryListListener<T> {
+        void onDataLoad(T item);
     }
 }

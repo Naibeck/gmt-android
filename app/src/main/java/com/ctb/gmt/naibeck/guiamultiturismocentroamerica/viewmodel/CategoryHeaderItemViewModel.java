@@ -37,6 +37,6 @@ public class CategoryHeaderItemViewModel extends BaseObservable {
     }
 
     public interface OnHeaderClickListener<T> {
-        void onHeaderClick(@NonNull T category);
+        void onHeaderClick(@NonNull T item);
     }
 }

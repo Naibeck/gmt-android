@@ -12,17 +12,23 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.PlaceListActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.CategoryAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.HeaderCategoryAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.CategoryHeaderItemViewModel;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.CategoryItemViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.CategoryViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceItemViewModel;
 
 public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, CategoryViewModel>
         implements CategoryViewModel.CategoryListListener<TourismCategory>,
+        CategoryItemViewModel.CategoryItemViewModelListener<CategoryPlace>,
         PlaceItemViewModel.PlaceViewModelListener.PlaceItemClickListener<Places>,
         CategoryHeaderItemViewModel.OnHeaderClickListener<CategoryPlace> {
     private static final String TAG = CategoryFragment.class.getName();
+
+    public static final String TYPE_ID = "typeId";
+    public static final String TYPE_NAME = "typeName";
 
     public static CategoryFragment getInstance(@NonNull String categoryId) {
         CategoryFragment fragment = new CategoryFragment();
@@ -61,15 +67,20 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        getViewModel().onDestroyInstance();
+    }
+
+    @Override
     public void onDataLoad(TourismCategory item) {
-        getBinding().categoryRecycler.setAdapter(new CategoryAdapter(getContext(), item.getCategoryPlaceList(), this));
+        getBinding().categoryRecycler.setAdapter(new CategoryAdapter(getContext(), item.getCategoryPlaceList(), this, this));
         getBinding().categoryName.setAdapter(new HeaderCategoryAdapter(getContext(), item.getCategoryPlaceList(), this));
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        getViewModel().onDestroyInstance();
+    public void onMoreClick(CategoryPlace item) {
+        showPlacesList(item);
     }
 
     @Override
@@ -78,7 +89,13 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     }
 
     @Override
-    public void onHeaderClick(@NonNull CategoryPlace category) {
-        Toast.makeText(getContext(), category.toString(), Toast.LENGTH_SHORT).show();
+    public void onHeaderClick(@NonNull CategoryPlace item) {
+        showPlacesList(item);
+    }
+
+    private void showPlacesList(CategoryPlace item) {
+        getContext().startActivity(goNextActivity(PlaceListActivity.class)
+                .putExtra(TYPE_NAME, item.getName())
+                .putExtra(TYPE_ID, item.getId()));
     }
 }

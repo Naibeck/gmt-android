@@ -3,6 +3,7 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain;
 import com.android.annotations.NonNull;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.GmtClient;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
 
 import java.util.ArrayList;
@@ -30,16 +31,14 @@ public class CategoryDomain {
     public CategoryDomain(GmtClient mGmtClient) {
         this.mGmtClient = mGmtClient;
     }
-    public void getCategoriPlace(@NonNull String categoryId, @NonNull Callback<TourismCategory> callback) {
+
+    public void getCategoryPlace(@NonNull String categoryId, @NonNull Callback<TourismCategory> callback) {
         Call<TourismCategory> call = mGmtClient.getCategoryService().getCategory(categoryId);
         call.enqueue(callback);
     }
 
-    public List<String> getCategoryNames(@NonNull TourismCategory tourismCategory) {
-        List<String> categoryPlaceList = new ArrayList<>();
-        for (CategoryPlace categoryPlace : tourismCategory.getCategoryPlaceList()) {
-            categoryPlaceList.add(categoryPlace.getName());
-        }
-        return categoryPlaceList;
+    public void getPlaceListFromSelectedType(@NonNull String typeId, @NonNull Callback<List<Places>> callback) {
+        Call<List<Places>> call = mGmtClient.getCategoryService().getPlaces(typeId);
+        call.enqueue(callback);
     }
 }
