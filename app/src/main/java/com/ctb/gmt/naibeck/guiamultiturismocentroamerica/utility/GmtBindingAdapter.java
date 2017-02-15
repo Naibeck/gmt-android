@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 
 public class GmtBindingAdapter {
@@ -13,6 +14,7 @@ public class GmtBindingAdapter {
     public static void setLogoUrl(ImageView view, String url) {
         Glide.with(view.getContext())
                 .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .error(R.mipmap.ic_launcher)
                 .into(view);
     }
