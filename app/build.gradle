@@ -39,8 +39,11 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 
-    //Runtume permission
+    //Runtime permission
     compile 'com.karumi:dexter:2.2.2'
+
+    //Image library
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 
     //Play Services libraries
     compile 'com.google.android.gms:play-services-maps:9.8.0'

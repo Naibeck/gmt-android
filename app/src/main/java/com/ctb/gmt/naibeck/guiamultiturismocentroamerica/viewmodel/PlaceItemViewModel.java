@@ -15,12 +15,14 @@ public class PlaceItemViewModel extends BaseObservable {
     private PlaceViewModelListener.PlaceItemClickListener mPlaceItemClickListener;
 
     private String mPlaceName;
+    private String mPlaceLogo;
 
     public PlaceItemViewModel(Context context, Places mPlace, PlaceViewModelListener.PlaceItemClickListener mPlaceItemClickListener) {
         this.context = context;
         this.mPlace = mPlace;
         this.mPlaceItemClickListener = mPlaceItemClickListener;
         this.mPlaceName = mPlace.getName();
+        this.mPlaceLogo = mPlace.getLogo();
     }
 
     @Bindable
@@ -31,6 +33,16 @@ public class PlaceItemViewModel extends BaseObservable {
     @Bindable
     public void setPlaceName(String mPlaceName) {
         this.mPlaceName = mPlaceName;
+    }
+
+    @Bindable
+    public String getPlaceLogo() {
+        return mPlaceLogo;
+    }
+
+    @Bindable
+    public void setPlaceLogo(String mPlaceLogo) {
+        this.mPlaceLogo = mPlaceLogo;
     }
 
     public void onPlaceClick(View view) {
