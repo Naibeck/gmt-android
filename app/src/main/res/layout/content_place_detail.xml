@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceDetailViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:logoUrl="@{viewModel.placeLogo}" />
+
+        <TextView
+            style="@style/CategoryTextView"
+            android:text="@{viewModel.placeName}" />
+
+        <TextView
+            style="@style/GeneralTextView"
+            android:text="@{viewModel.placeDescription}" />
+
+        <TextView
+            style="@style/GeneralTextView"
+            android:text="@{viewModel.placeAddress}" />
+    </LinearLayout>
+</layout>

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentCategoryBinding;
@@ -12,6 +11,7 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.TourismCategory;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.PlaceDetailActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.PlaceListActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.CategoryAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.HeaderCategoryAdapter;
@@ -28,6 +28,7 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     private static final String TAG = CategoryFragment.class.getName();
 
     public static final String CATEGORY_PLACE = "categoryPlace";
+    public static final String PLACE = "place";
 
     public static CategoryFragment getInstance(@NonNull String categoryId) {
         CategoryFragment fragment = new CategoryFragment();
@@ -84,7 +85,8 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
 
     @Override
     public void onItemClick(Places item) {
-        Toast.makeText(getContext(), item.toString(), Toast.LENGTH_SHORT).show();
+        getContext().startActivity(goNextActivity(PlaceDetailActivity.class)
+                .putExtra(PLACE, item));
     }
 
     @Override

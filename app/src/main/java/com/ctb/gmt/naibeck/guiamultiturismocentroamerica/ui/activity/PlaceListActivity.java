@@ -1,7 +1,6 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityPlaceListBinding;
@@ -77,6 +76,7 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
 
     @Override
     public void onItemClick(Places item) {
-        Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT).show();
+        startActivity(goNextActivity(PlaceDetailActivity.class)
+                .putExtra(CategoryFragment.PLACE, item));
     }
 }
