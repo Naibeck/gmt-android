@@ -9,6 +9,7 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.PlaceListAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.CategoryFragment;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LineItemDecoratorSeparator;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.ItemPlaceListViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceListViewModel;
 
@@ -48,6 +49,8 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
     public void initComponents(ActivityPlaceListBinding binding) {
         super.initComponents(binding);
         setTitle(getCategoryPlace().getName());
+
+        getBinding().placeListContent.placeListFromCategory.addItemDecoration(new LineItemDecoratorSeparator(this));
 
         getViewModel().loadData(String.valueOf(getCategoryPlace().getId()));
     }
