@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout >
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceListViewModel" />
+    </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -14,6 +20,13 @@
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/item_place_list"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="@{viewModel.isVisible}"/>
 
     </RelativeLayout>
 </layout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -23,7 +23,8 @@
         </android.support.design.widget.AppBarLayout>
 
         <include android:id="@+id/placeListContent"
-            layout="@layout/content_place_list" />
+            layout="@layout/content_place_list"
+            bind:viewModel="@{viewModel}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

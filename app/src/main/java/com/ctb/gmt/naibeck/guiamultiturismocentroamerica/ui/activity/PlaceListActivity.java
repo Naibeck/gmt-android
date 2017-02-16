@@ -27,7 +27,7 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
 
     @Override
     public PlaceListViewModel getViewModel() {
-        return new PlaceListViewModel(this, this, getCategoryDomain());
+        return PlaceListViewModel.getInstance(this, this, getCategoryDomain());
     }
 
     @Override
@@ -53,6 +53,12 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
         getBinding().placeListContent.placeListFromCategory.addItemDecoration(new LineItemDecoratorSeparator(this));
 
         getViewModel().loadData(String.valueOf(getCategoryPlace().getId()));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        getViewModel().onDestroyInstance();
     }
 
     private CategoryPlace getCategoryPlace() {
