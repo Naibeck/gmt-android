@@ -22,6 +22,9 @@
                 layout="@layout/toolbar" />
         </android.support.design.widget.AppBarLayout>
 
+        <include android:id="@+id/placeListContent"
+            layout="@layout/content_place_list" />
+
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>

@@ -1,14 +1,20 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityPlaceListBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.PlaceListAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.CategoryFragment;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.ItemPlaceListViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceListViewModel;
 
-public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, PlaceListViewModel> {
+public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, PlaceListViewModel>
+        implements PlaceListViewModel.PlaceListViewModelListener<CategoryPlace>,
+        ItemPlaceListViewModel.PlaceListItemClickListener<Places>{
     private static final String TAG = PlaceListActivity.class.getName();
 
     private CategoryPlace mCategoryPlace;
@@ -20,7 +26,7 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
 
     @Override
     public PlaceListViewModel getViewModel() {
-        return new PlaceListViewModel();
+        return new PlaceListViewModel(this, this, getCategoryDomain());
     }
 
     @Override
@@ -41,8 +47,9 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
     @Override
     public void initComponents(ActivityPlaceListBinding binding) {
         super.initComponents(binding);
-
         setTitle(getCategoryPlace().getName());
+
+        getViewModel().loadData(String.valueOf(getCategoryPlace().getId()));
     }
 
     private CategoryPlace getCategoryPlace() {
@@ -52,5 +59,15 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
 
         mCategoryPlace = getIntent().getParcelableExtra(CategoryFragment.CATEGORY_PLACE);
         return mCategoryPlace;
+    }
+
+    @Override
+    public void onDataLoad(CategoryPlace item) {
+        getBinding().placeListContent.placeListFromCategory.setAdapter(new PlaceListAdapter(this, item.getPlaceList(), this));
+    }
+
+    @Override
+    public void onItemClick(Places item) {
+        Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT).show();
     }
 }

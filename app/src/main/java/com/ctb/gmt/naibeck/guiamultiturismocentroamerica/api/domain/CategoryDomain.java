@@ -37,8 +37,8 @@ public class CategoryDomain {
         call.enqueue(callback);
     }
 
-    public void getPlaceListFromSelectedType(@NonNull String typeId, @NonNull Callback<List<Places>> callback) {
-        Call<List<Places>> call = mGmtClient.getCategoryService().getPlaces(typeId);
+    public void getPlaceListFromSelectedType(@NonNull String typeId, @NonNull Callback<CategoryPlace> callback) {
+        Call<CategoryPlace> call = mGmtClient.getCategoryService().getPlaces(typeId);
         call.enqueue(callback);
     }
 }
