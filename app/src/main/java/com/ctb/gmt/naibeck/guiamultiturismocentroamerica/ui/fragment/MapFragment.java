@@ -2,12 +2,14 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentMapBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.PlacePin;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MapViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -16,7 +18,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> implements TextView.OnEditorActionListener {
+import java.util.List;
+
+public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
+        implements TextView.OnEditorActionListener,
+        MapViewModel.PlacePinLoadListener<PlacePin> {
     private static final String TAG = MapFragment.class.getName();
 
     private static final float ZOOM_LEVEL = 15.0f;
@@ -25,6 +31,8 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
         return new MapFragment();
     }
 
+    private GoogleMap mGoogleMap;
+
     @Override
     public int getLayout() {
         return R.layout.fragment_map;
@@ -32,7 +40,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
 
     @Override
     public MapViewModel getViewModel() {
-        return MapViewModel.getInstance(this, getGmtPreferences());
+        return MapViewModel.getInstance(this, getGmtPreferences(), getPlacePinDomain(), this);
     }
 
 
@@ -55,6 +63,8 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
         mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
+                mGoogleMap = googleMap;
+                getViewModel().pinsLoaded();
                 if (getGmtPreferences().getLastStoredLocation() != null) {
                     if (isLocationPermissionGranted()) {
                         googleMap.setMyLocationEnabled(true);
@@ -68,7 +78,8 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
     }
 
     private MarkerOptions markersSetup(@NonNull LatLng markerPosition, @DrawableRes int resource) {
-        return new MarkerOptions().icon(getViewModel().getIcon(resource))
+        return new MarkerOptions()
+//                .icon(getViewModel().getIcon(resource)) 
                 .position(markerPosition);
     }
 
@@ -80,5 +91,16 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel> 
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onPinLoaded(List<PlacePin> items) {
+        for (PlacePin placePin :  items) {
+            LatLng latLng = new LatLng(placePin.getLat(), placePin.getLon());
+            if (mGoogleMap != null) {
+                mGoogleMap.addMarker(markersSetup(latLng, R.drawable.map_ic)
+                        .title(placePin.getName()));
+            }
+        }
     }
 }

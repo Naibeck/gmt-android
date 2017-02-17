@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.GmtClient;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.CategoryDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.PlacePinDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.GmtSharedPreferences;
 
 /**
@@ -105,5 +106,9 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
 
     public CategoryDomain getCategoryDomain() {
         return CategoryDomain.getInstance(getGmtClient());
+    }
+
+    public PlacePinDomain getPlacePinDomain() {
+        return PlacePinDomain.getInstance(getGmtClient());
     }
 }

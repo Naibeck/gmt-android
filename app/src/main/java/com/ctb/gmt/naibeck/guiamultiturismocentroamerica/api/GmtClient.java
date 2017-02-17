@@ -6,6 +6,7 @@ import android.support.annotation.StringDef;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.MultiturismoApplication;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.service.CategoryService;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.service.PlacePinService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -18,6 +19,7 @@ public class GmtClient {
 
     private Context mContext;
     private CategoryService mCategoryService;
+    private PlacePinService mPlacePinService;
 
     public static GmtClient getInstance(@NonNull Context context) {
         return new GmtClient(context);
@@ -43,10 +45,15 @@ public class GmtClient {
                 .build();
 
         mCategoryService = retrofit.create(CategoryService.class);
+        mPlacePinService = retrofit.create(PlacePinService.class);
     }
 
     public CategoryService getCategoryService() {
         return mCategoryService;
+    }
+
+    public PlacePinService getPlacePinService() {
+        return mPlacePinService;
     }
 
 }
