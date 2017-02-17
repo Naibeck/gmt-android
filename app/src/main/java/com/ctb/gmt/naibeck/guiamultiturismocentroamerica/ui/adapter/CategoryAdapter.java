@@ -49,6 +49,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         placeList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         placeList.setAdapter(new PlaceAdapter(mContext, categoryPlace.getPlaceList(), mPlaceItemClickListener));
+        holder.mBinding.executePendingBindings();
     }
 
     @Override

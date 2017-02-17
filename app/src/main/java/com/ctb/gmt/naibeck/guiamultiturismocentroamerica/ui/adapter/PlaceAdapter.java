@@ -39,6 +39,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         Places places = mPlacesList.get(position);
         holder.mBinding.setViewModel(new PlaceItemViewModel(mContext, places, mPlaceItemClickListener));
+        holder.mBinding.executePendingBindings();
     }
 
     @Override

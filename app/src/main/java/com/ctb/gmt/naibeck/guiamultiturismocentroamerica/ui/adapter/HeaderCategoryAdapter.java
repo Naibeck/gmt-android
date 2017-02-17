@@ -41,6 +41,7 @@ public class HeaderCategoryAdapter extends RecyclerView.Adapter<HeaderCategoryAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         CategoryPlace categoryPlace = mCategoryPlaces.get(position);
         holder.mBinding.setViewModel(new CategoryHeaderItemViewModel(categoryPlace, mOnHeaderClickListener));
+        holder.mBinding.executePendingBindings();
     }
 
     @Override
