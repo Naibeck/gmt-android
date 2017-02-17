@@ -41,4 +41,10 @@ public class CategoryDomain {
         Call<CategoryPlace> call = mGmtClient.getCategoryService().getPlaces(typeId);
         call.enqueue(callback);
     }
+
+    public void removeInstance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
+    }
 }

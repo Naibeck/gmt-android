@@ -163,7 +163,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
             return mLocationDomain;
         }
 
-        mLocationDomain = new LocationDomain(this, listener);
+        mLocationDomain = LocationDomain.getInstance(this, listener);
         return mLocationDomain;
     }
 

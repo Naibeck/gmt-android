@@ -71,4 +71,11 @@ public class CategoryActivity extends BaseActivity<ActivityCategoryBinding, Void
         mCategoryFragment = CategoryFragment.getInstance(categoryId);
         return mCategoryFragment;
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        getGmtPreferences().removeInstance();
+        getCategoryDomain().removeInstance();
+    }
 }

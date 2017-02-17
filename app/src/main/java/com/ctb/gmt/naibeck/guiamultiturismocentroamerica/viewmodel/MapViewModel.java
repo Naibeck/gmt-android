@@ -94,6 +94,12 @@ public class MapViewModel extends BaseObservable {
         });
     }
 
+    public void removeIsntance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
+    }
+
     public interface PlacePinLoadListener<T> {
         void onPinLoaded(List<T> items);
     }

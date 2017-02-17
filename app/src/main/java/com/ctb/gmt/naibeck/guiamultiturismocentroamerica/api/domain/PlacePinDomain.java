@@ -32,4 +32,10 @@ public class PlacePinDomain {
         Call<PlaceCoordinate> call = mGmtClient.getPlacePinService().getCoordinateList();
         call.enqueue(callback);
     }
+
+    public void removeInstance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
+    }
 }

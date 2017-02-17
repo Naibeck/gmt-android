@@ -2,7 +2,6 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
@@ -102,5 +101,12 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
                         .title(placePin.getName()));
             }
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getViewModel().removeIsntance();
+        getPlacePinDomain().removeInstance();
     }
 }

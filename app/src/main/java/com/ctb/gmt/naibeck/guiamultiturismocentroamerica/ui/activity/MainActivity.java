@@ -23,6 +23,8 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
 import com.google.android.gms.common.ConnectionResult;
 
+import java.lang.ref.WeakReference;
+
 public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         implements LocationDomain.LocationDomainListener {
 
@@ -38,7 +40,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     private MapFragment mMap;
     private HomeFragment mHome;
 
-    private LocationDomain mLocationDomain;
+    private WeakReference<LocationDomain> mLocationWeakDomain;
 
     @Override
     public int getLayout() {
@@ -81,14 +83,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     @Override
     protected void onStop() {
-        getLocationDomain().handleOnStop();
         super.onStop();
+        getLocationDomain().handleOnStop();
+        getGmtPreferences().removeInstance();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mLocationDomain.removeLocationUpdates();
+        getLocationDomain().removeLocationUpdates();
+        getLocationDomain().removeInstance();
     }
 
     private void setupNavMenu() {
@@ -145,7 +149,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
                         replaceFragment(R.id.mainContainer, getHomeFragment());
                         break;
                     case R.id.bottomMap:
-                        storeLocation(mLocationDomain.getLastKnownLocation());
+                        storeLocation(getLocationDomain().getLastKnownLocation());
                         replaceFragment(R.id.mainContainer, getMapFragment());
                         break;
                 }
@@ -178,12 +182,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     }
 
     private LocationDomain getLocationDomain() {
-        if (mLocationDomain != null) {
-            return mLocationDomain;
-        }
-
-        mLocationDomain = getLocationDomain(this);
-        return mLocationDomain;
+        mLocationWeakDomain = new WeakReference<>(getLocationDomain(this));
+        return mLocationWeakDomain.get();
     }
 
     /**
@@ -220,8 +220,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     public void onConnected(@Nullable Bundle bundle) {
         Log.d(TAG, "Connection succeed");
         if (isLocationPermissionGranted()) { //Check if permission were granted on Android 6 >
-            storeLocation(mLocationDomain.getLastKnownLocation());
-            mLocationDomain.startLocationUpdates();
+            storeLocation(getLocationDomain().getLastKnownLocation());
+            getLocationDomain().startLocationUpdates();
         }
     }
 

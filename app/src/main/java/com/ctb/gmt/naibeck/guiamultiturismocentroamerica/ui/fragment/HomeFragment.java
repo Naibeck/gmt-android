@@ -25,4 +25,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     public void setViewModelToBinding() {
         getBinding().setViewModel(getViewModel());
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getViewModel().removeInstance();
+    }
 }

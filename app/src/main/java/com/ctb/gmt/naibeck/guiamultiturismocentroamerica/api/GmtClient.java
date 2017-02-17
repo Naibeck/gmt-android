@@ -55,5 +55,4 @@ public class GmtClient {
     public PlacePinService getPlacePinService() {
         return mPlacePinService;
     }
-
 }

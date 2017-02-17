@@ -63,4 +63,10 @@ public class GmtSharedPreferences {
         }
         putStringPreference(LAST_KNOWN_LOCATION, json);
     }
+
+    public void removeInstance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
+    }
 }

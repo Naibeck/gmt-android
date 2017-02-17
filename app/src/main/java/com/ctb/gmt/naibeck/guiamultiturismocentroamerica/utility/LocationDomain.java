@@ -21,13 +21,23 @@ public class LocationDomain implements GoogleApiClient.ConnectionCallbacks, Goog
     private static final int FASTEST_INTERVAL = 60000 * 5;
     private static final int INTERVAL = 60000 * 15;
 
+    private static LocationDomain sInstance;
+
     private AppCompatActivity mActivity;
     private LocationDomainListener mLocationDomainListener;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
 
-    public LocationDomain(@NonNull AppCompatActivity mActivity,
-                          @NonNull LocationDomainListener listener) {
+    public static LocationDomain getInstance(@NonNull AppCompatActivity activity, @NonNull LocationDomainListener listener) {
+        if (sInstance != null) {
+            return sInstance;
+        }
+        sInstance = new LocationDomain(activity, listener);
+        return sInstance;
+    }
+
+    public LocationDomain(AppCompatActivity mActivity,
+                          LocationDomainListener listener) {
         this.mActivity = mActivity;
         this.mLocationDomainListener = listener;
         initGoogleApiClient();
@@ -49,6 +59,8 @@ public class LocationDomain implements GoogleApiClient.ConnectionCallbacks, Goog
     }
 
     public void handleOnStop() {
+        mGoogleApiClient.unregisterConnectionCallbacks(this);
+        mGoogleApiClient.unregisterConnectionFailedListener(this);
         mGoogleApiClient.disconnect();
     }
 
@@ -87,6 +99,12 @@ public class LocationDomain implements GoogleApiClient.ConnectionCallbacks, Goog
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         return mLocationRequest;
+    }
+
+    public void removeInstance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
     }
 
     @Override

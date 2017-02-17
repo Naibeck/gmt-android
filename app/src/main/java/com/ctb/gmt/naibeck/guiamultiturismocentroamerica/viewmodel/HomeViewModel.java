@@ -29,4 +29,10 @@ public class HomeViewModel extends BaseObservable {
         this.mFragment = mFragment;
         this.mSharedPreferences = mSharedPreferences;
     }
+
+    public void removeInstance() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
+    }
 }
