@@ -20,7 +20,7 @@ public class Places implements Parcelable {
     @SerializedName("placeAdress")
     private String mAddress;
 
-    @SerializedName("ubicacionLogo")
+    @SerializedName("placeLogo")
     private String mLogo;
 
     @SerializedName("placeLatitud")

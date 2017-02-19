@@ -19,7 +19,7 @@ public class ItemPlaceListViewModel extends BaseObservable {
 
         this.mLogoUrl = mPlace.getLogo();
         this.mPlaceName = mPlace.getName();
-        mPlaceAddress = mPlace.getAddress();
+        this.mPlaceAddress = mPlace.getAddress();
     }
 
     private String mLogoUrl;
