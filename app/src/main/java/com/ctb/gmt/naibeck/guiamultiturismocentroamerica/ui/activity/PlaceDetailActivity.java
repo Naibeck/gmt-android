@@ -42,6 +42,7 @@ public class PlaceDetailActivity extends BaseActivity<ActivityPlaceDetailBinding
     @Override
     public void initComponents(ActivityPlaceDetailBinding binding) {
         super.initComponents(binding);
+        setTitle(mPlace.getName());
     }
 
     private Places getPlace() {

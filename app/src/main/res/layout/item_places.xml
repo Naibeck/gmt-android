@@ -35,8 +35,7 @@
                     android:layout_margin="4dp"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    app:logoUrl="@{viewModel.placeLogo}"
-                    android:background="@color/colorPrimary"/>
+                    app:logoUrl="@{viewModel.placeLogo}" />
 
                 <TextView
                     android:layout_width="100dp"

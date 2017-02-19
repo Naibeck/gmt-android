@@ -18,18 +18,35 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/view_vertical_margin"
             app:logoUrl="@{viewModel.placeLogo}" />
 
-        <TextView
-            style="@style/CategoryTextView"
-            android:text="@{viewModel.placeName}" />
+        <RelativeLayout
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/GeneralTextView"
-            android:text="@{viewModel.placeDescription}" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <TextView
-            style="@style/GeneralTextView"
-            android:text="@{viewModel.placeAddress}" />
+                <TextView
+                    style="@style/CategoryTextView"
+                    android:layout_marginBottom="@dimen/view_vertical_margin"
+                    android:text="@{viewModel.placeName}" />
+
+                <TextView
+                    style="@style/GeneralTextView"
+                    android:layout_marginBottom="@dimen/view_vertical_margin"
+                    android:text="@{viewModel.placeDescription}" />
+
+                <TextView
+                    style="@style/GeneralTextView"
+                    android:layout_marginBottom="@dimen/view_vertical_margin"
+                    android:text="@{viewModel.placeAddress}" />
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </layout>
