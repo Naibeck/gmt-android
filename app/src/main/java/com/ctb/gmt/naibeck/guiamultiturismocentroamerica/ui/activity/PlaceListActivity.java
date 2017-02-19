@@ -75,6 +75,11 @@ public class PlaceListActivity extends BaseActivity<ActivityPlaceListBinding, Pl
     }
 
     @Override
+    public void onRetryClick() {
+        getViewModel().loadData(String.valueOf(mCategoryPlace.getId()));
+    }
+
+    @Override
     public void onItemClick(Places item) {
         startActivity(goNextActivity(PlaceDetailActivity.class)
                 .putExtra(CategoryFragment.PLACE, item));

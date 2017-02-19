@@ -30,6 +30,8 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     public static final String CATEGORY_PLACE = "categoryPlace";
     public static final String PLACE = "place";
 
+    private String mCategoryId;
+
     public static CategoryFragment getInstance(@NonNull String categoryId) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
@@ -56,7 +58,7 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     @Override
     public void initComponents() {
         super.initComponents();
-        String mCategoryId = getArguments().getString(MainActivity.SELECTED_CATEGORY);
+        mCategoryId = getArguments().getString(MainActivity.SELECTED_CATEGORY);
         RecyclerView mCategoryRecycler = getBinding().categoryRecycler;
         mCategoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         getBinding().categoryName.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -76,6 +78,13 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
     public void onDataLoad(TourismCategory item) {
         getBinding().categoryRecycler.setAdapter(new CategoryAdapter(getContext(), item.getCategoryPlaceList(), this, this));
         getBinding().categoryName.setAdapter(new HeaderCategoryAdapter(getContext(), item.getCategoryPlaceList(), this));
+    }
+
+    @Override
+    public void onRetryClick() {
+        if (mCategoryId != null) {
+            getViewModel().loadData(mCategoryId);
+        }
     }
 
     @Override

@@ -27,6 +27,7 @@ public class CategoryViewModel extends BaseObservable {
     private CategoryDomain mCategoryDomain;
 
     private int mIsVisible;
+    private int mConnectionVisibility;
 
     public static CategoryViewModel getInstance(@NonNull CategoryFragment fragment,
                                                 @NonNull GmtSharedPreferences preferences,
@@ -47,6 +48,7 @@ public class CategoryViewModel extends BaseObservable {
         this.mGmtSharedPreferences = mGmtSharedPreferences;
         this.mCategoryListListener = mCategoryListListener;
         this.mCategoryDomain = mCategoryDomain;
+        this.mConnectionVisibility = View.GONE;
     }
 
     @Bindable
@@ -58,6 +60,17 @@ public class CategoryViewModel extends BaseObservable {
     private void setIsVisible(int mIsVisible) {
         this.mIsVisible = mIsVisible;
         notifyPropertyChanged(BR.isVisible);
+    }
+
+    @Bindable
+    public int getConnectionVisibility() {
+        return mConnectionVisibility;
+    }
+
+    @Bindable
+    public void setConnectionVisibility(int mConnectionVisibility) {
+        this.mConnectionVisibility = mConnectionVisibility;
+        notifyPropertyChanged(BR.connectionVisibility);
     }
 
     public void loadData(@NonNull String categoryId) {
@@ -74,9 +87,18 @@ public class CategoryViewModel extends BaseObservable {
 
             @Override
             public void onFailure(Call<TourismCategory> call, Throwable t) {
-
+                Log.d(TAG, "Error", t);
+                setIsVisible(View.INVISIBLE);
+                setConnectionVisibility(View.VISIBLE);
             }
         });
+    }
+
+    public void retryClick(View view) {
+        mCategoryListListener.onRetryClick();
+        if (mConnectionVisibility == View.VISIBLE) {
+            setConnectionVisibility(View.GONE);
+        }
     }
 
     public void onDestroyInstance() {
@@ -87,5 +109,6 @@ public class CategoryViewModel extends BaseObservable {
 
     public interface CategoryListListener<T> {
         void onDataLoad(T item);
+        void onRetryClick();
     }
 }

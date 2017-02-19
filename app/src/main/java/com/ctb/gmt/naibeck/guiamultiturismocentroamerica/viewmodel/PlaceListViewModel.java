@@ -25,6 +25,7 @@ public class PlaceListViewModel extends BaseObservable {
     private CategoryDomain mCategoryDomain;
 
     private int mIsVisible;
+    private int mConnectionVisibility;
 
     public static PlaceListViewModel getInstance(PlaceListActivity mActivity,
                                                  PlaceListViewModelListener<CategoryPlace> mPlaceListViewModelListener,
@@ -43,6 +44,7 @@ public class PlaceListViewModel extends BaseObservable {
         this.mActivity = mActivity;
         this.mPlaceListViewModelListener = mPlaceListViewModelListener;
         this.mCategoryDomain = mCategoryDomain;
+        this.mConnectionVisibility = View.GONE;
     }
 
     @Bindable
@@ -54,6 +56,17 @@ public class PlaceListViewModel extends BaseObservable {
     public void setIsVisible(int mIsVisible) {
         this.mIsVisible = mIsVisible;
         notifyPropertyChanged(BR.isVisible);
+    }
+
+    @Bindable
+    public int getConnectionVisibility() {
+        return mConnectionVisibility;
+    }
+
+    @Bindable
+    public void setConnectionVisibility(int mConnectionVisibility) {
+        this.mConnectionVisibility = mConnectionVisibility;
+        notifyPropertyChanged(BR.connectionVisibility);
     }
 
     public void loadData(@NonNull String categoryId) {
@@ -70,9 +83,9 @@ public class PlaceListViewModel extends BaseObservable {
 
             @Override
             public void onFailure(Call<CategoryPlace> call, Throwable t) {
-                Log.d(TAG, "Error: ", t);
+                Log.d(TAG, "Error", t);
                 setIsVisible(View.INVISIBLE);
-                notifyChange();
+                setConnectionVisibility(View.VISIBLE);
             }
         });
     }
@@ -83,7 +96,16 @@ public class PlaceListViewModel extends BaseObservable {
         }
     }
 
+    public void retryClick(View view) {
+        mPlaceListViewModelListener.onRetryClick();
+        if (mConnectionVisibility == View.VISIBLE) {
+            setConnectionVisibility(View.GONE);
+        }
+    }
+
     public interface PlaceListViewModelListener<T> {
         void onDataLoad(T item);
+
+        void onRetryClick();
     }
 }
