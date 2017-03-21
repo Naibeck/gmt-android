@@ -45,4 +45,10 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
         String searchRequest = getArguments().getString(SEARCH_REQUEST);
         getViewModel().loadData(searchRequest);
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getViewModel().onDestroyInstance();
+    }
 }
