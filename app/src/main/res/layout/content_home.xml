@@ -12,8 +12,10 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            app:menu="@menu/bottom_navigation"/>
+            android:background="@color/colorAccent"
+            app:menu="@menu/bottom_navigation"
+            app:itemIconTint="@color/bottom_view_selector"
+            app:itemTextColor="@color/bottom_view_selector"/>
 
         <FrameLayout
             android:id="@+id/mainContainer"

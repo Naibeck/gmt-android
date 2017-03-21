@@ -28,7 +28,7 @@
     </style>
 
     <style name="HeaderTextView" parent="GeneralTextView">
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:paddingLeft">@dimen/header_view_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/header_view_horizontal_margin</item>
         <item name="android:paddingTop">@dimen/header_view_vertical_margin</item>
