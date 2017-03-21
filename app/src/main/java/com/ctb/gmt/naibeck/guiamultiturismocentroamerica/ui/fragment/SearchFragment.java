@@ -1,7 +1,6 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.android.annotations.NonNull;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
@@ -32,7 +31,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
 
     @Override
     public SearchViewModel getViewModel() {
-        return SearchViewModel.getInstance(this);
+        return SearchViewModel.getInstance(this, getSearchdomain());
     }
 
     @Override
@@ -44,6 +43,6 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
     public void initComponents() {
         super.initComponents();
         String searchRequest = getArguments().getString(SEARCH_REQUEST);
-        Log.d(TAG, searchRequest);
+        getViewModel().loadData(searchRequest);
     }
 }
