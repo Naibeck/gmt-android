@@ -2,11 +2,11 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.MultiturismoApplication;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.service.CategoryService;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.service.PlacePinService;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.service.SearchService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -20,6 +20,7 @@ public class GmtClient {
     private Context mContext;
     private CategoryService mCategoryService;
     private PlacePinService mPlacePinService;
+    private SearchService mSearchService;
 
     public static GmtClient getInstance(@NonNull Context context) {
         return new GmtClient(context);
@@ -46,6 +47,7 @@ public class GmtClient {
 
         mCategoryService = retrofit.create(CategoryService.class);
         mPlacePinService = retrofit.create(PlacePinService.class);
+        mSearchService = retrofit.create(SearchService.class);
     }
 
     public CategoryService getCategoryService() {
@@ -54,5 +56,9 @@ public class GmtClient {
 
     public PlacePinService getPlacePinService() {
         return mPlacePinService;
+    }
+
+    public SearchService getSearchservice() {
+        return mSearchService;
     }
 }
