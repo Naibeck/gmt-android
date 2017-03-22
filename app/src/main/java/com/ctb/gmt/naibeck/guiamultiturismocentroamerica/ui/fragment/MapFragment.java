@@ -86,7 +86,6 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
         if (i == EditorInfo.IME_ACTION_SEARCH) {
             //TODO: Change this method to submit a search
-            getViewModel().displayMessage();
             getViewModel().goSearchActivity();
             return true;
         }

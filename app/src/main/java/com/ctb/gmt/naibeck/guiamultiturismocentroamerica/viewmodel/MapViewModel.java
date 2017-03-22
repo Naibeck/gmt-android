@@ -77,10 +77,6 @@ public class MapViewModel extends BaseObservable {
         return BitmapDescriptorFactory.fromResource(drawableResource);
     }
 
-    public void displayMessage() {
-        Toast.makeText(mFragment.getContext(), getSearchContent(), Toast.LENGTH_SHORT).show();
-    }
-
     public void goSearchActivity() {
         Intent intent = new Intent(mFragment.getContext(), SearchActivity.class);
         intent.putExtra(SearchFragment.SEARCH_REQUEST, getSearchContent());
