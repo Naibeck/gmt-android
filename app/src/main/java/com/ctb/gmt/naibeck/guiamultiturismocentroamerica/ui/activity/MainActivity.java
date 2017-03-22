@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityMainBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.DirectoryFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.HomeFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     private DrawerLayout mDrawerMenu;
     private MapFragment mMap;
     private HomeFragment mHome;
+    private DirectoryFragment mDirectoryFragment;
 
     private WeakReference<LocationDomain> mLocationWeakDomain;
 
@@ -148,6 +150,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
                     case R.id.bottomHome:
                         replaceFragment(R.id.mainContainer, getHomeFragment());
                         break;
+                    case R.id.bottomDirectory:
+                        replaceFragment(R.id.mainContainer, getDirectoryFragment());
+                        break;
                     case R.id.bottomMap:
                         storeLocation(getLocationDomain().getLastKnownLocation());
                         replaceFragment(R.id.mainContainer, getMapFragment());
@@ -174,6 +179,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
         mMap = MapFragment.getInstance();
         return mMap;
+    }
+
+    private DirectoryFragment getDirectoryFragment() {
+        if (mDirectoryFragment == null) {
+            mDirectoryFragment = DirectoryFragment.getInstance();
+        }
+        return mDirectoryFragment;
     }
 
     public void goCategoryActivity(@NonNull String categoryId) {
