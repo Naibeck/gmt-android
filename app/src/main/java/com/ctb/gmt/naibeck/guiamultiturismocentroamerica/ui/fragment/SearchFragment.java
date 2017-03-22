@@ -8,10 +8,13 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentSearchBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.PlaceDetailActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.PlaceListAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LineItemDecoratorSeparator;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.ItemPlaceListViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.SearchViewModel;
+
+import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.CategoryFragment.PLACE;
 
 public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchViewModel>
         implements SearchViewModel.SearchListListener<CategoryPlace>,
@@ -65,6 +68,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
 
     @Override
     public void onItemClick(Places item) {
-        Log.d(TAG, item.toString());
+        getContext().startActivity(goNextActivity(PlaceDetailActivity.class)
+                .putExtra(PLACE, item));
     }
 }

@@ -21,4 +21,7 @@ public interface CategoryService {
 
     @GET("ubicacion/tipo/{id_tipo}")
     Call<CategoryPlace> getPlaces(@Path("id_tipo") @NonNull String idTipo);
+
+    @GET("ubicacion/listado")
+    Call<CategoryPlace> getDirectory();
 }

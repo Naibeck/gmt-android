@@ -5,6 +5,10 @@
         android:title="@string/home"
         android:icon="@drawable/home_ic" />
     <item
+        android:id="@+id/bottomDirectory"
+        android:title="@string/directory"
+        android:icon="@drawable/common_full_open_on_phone" />
+    <item
         android:id="@+id/bottomMap"
         android:title="@string/map"
         android:icon="@drawable/map_ic" />

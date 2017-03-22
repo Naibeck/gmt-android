@@ -42,6 +42,11 @@ public class CategoryDomain {
         call.enqueue(callback);
     }
 
+    public void getDirectory(@NonNull Callback<CategoryPlace> callback) {
+        Call<CategoryPlace> call = mGmtClient.getCategoryService().getDirectory();
+        call.enqueue(callback);
+    }
+
     public void removeInstance() {
         if (sInstance != null) {
             sInstance = null;
