@@ -18,8 +18,7 @@ public class DirectoryFragment extends BaseFragment<FragmentDirectoryBinding, Di
     private static final String TAG = DirectoryFragment.class.getName();
 
     public static DirectoryFragment getInstance() {
-        DirectoryFragment directoryFragment = new DirectoryFragment();
-        return directoryFragment;
+        return new DirectoryFragment();
     }
 
     @Override
@@ -53,5 +52,11 @@ public class DirectoryFragment extends BaseFragment<FragmentDirectoryBinding, Di
     public void onItemClick(Places item) {
         getContext().startActivity(goNextActivity(PlaceDetailActivity.class)
                 .putExtra(PLACE, item));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getViewModel().onDestroyFragment();
     }
 }

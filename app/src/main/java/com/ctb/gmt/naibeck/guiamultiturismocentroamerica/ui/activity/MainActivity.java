@@ -88,6 +88,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         super.onStop();
         getLocationDomain().handleOnStop();
         getGmtPreferences().removeInstance();
+        mDirectoryFragment = null;
     }
 
     @Override
@@ -151,7 +152,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
                         replaceFragment(R.id.mainContainer, getHomeFragment());
                         break;
                     case R.id.bottomDirectory:
-                        replaceFragment(R.id.mainContainer, getDirectoryFragment());
+                        replaceFragment(R.id.mainContainer, new DirectoryFragment());
                         break;
                     case R.id.bottomMap:
                         storeLocation(getLocationDomain().getLastKnownLocation());

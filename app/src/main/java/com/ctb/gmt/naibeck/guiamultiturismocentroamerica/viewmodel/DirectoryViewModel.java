@@ -66,6 +66,10 @@ public class DirectoryViewModel extends BaseObservable{
         });
     }
 
+    public void onDestroyFragment() {
+        sInstance = null;
+    }
+
     public interface DirectoryListListener<T> {
         void onDataLoad(T item);
     }
