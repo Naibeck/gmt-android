@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout >
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
@@ -8,15 +8,14 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:layout_below="@id/categoryName"
             android:id="@+id/searchRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/item_place_list"/>
 
         <ProgressBar

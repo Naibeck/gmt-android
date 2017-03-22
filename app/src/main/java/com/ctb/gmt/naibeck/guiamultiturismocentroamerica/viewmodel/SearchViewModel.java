@@ -25,19 +25,21 @@ public class SearchViewModel extends BaseObservable {
 
     private SearchFragment mSearchFragment;
     private SearchDomain mSearchDomain;
+    private SearchListListener<CategoryPlace> mSearchListListener;
 
     private int mIsVisible;
 
-    public static SearchViewModel getInstance(SearchFragment searchFragment, SearchDomain searchDomain) {
+    public static SearchViewModel getInstance(SearchFragment searchFragment, SearchDomain searchDomain, SearchListListener<CategoryPlace> categoryPlaceSearchListListener) {
         if (sInstance == null) {
-            sInstance = new SearchViewModel(searchFragment, searchDomain);
+            sInstance = new SearchViewModel(searchFragment, searchDomain, categoryPlaceSearchListListener);
         }
         return sInstance;
     }
 
-    public SearchViewModel(SearchFragment mSearchFragment, SearchDomain mSearchDomain) {
+    public SearchViewModel(SearchFragment mSearchFragment, SearchDomain mSearchDomain, SearchListListener<CategoryPlace> mSearchListListener) {
         this.mSearchFragment = mSearchFragment;
         this.mSearchDomain = mSearchDomain;
+        this.mSearchListListener = mSearchListListener;
     }
 
     @Bindable
@@ -55,8 +57,8 @@ public class SearchViewModel extends BaseObservable {
             @Override
             public void onResponse(Call<CategoryPlace> call, Response<CategoryPlace> response) {
                 if (response.isSuccessful()) {
+                    mSearchListListener.onDataLoad(response.body());
                     setIsVisible(View.GONE);
-                    Log.d(TAG, response.body().toString());
                 }
             }
 
@@ -72,5 +74,9 @@ public class SearchViewModel extends BaseObservable {
         if (sInstance != null) {
             sInstance = null;
         }
+    }
+
+    public interface SearchListListener<T> {
+        void onDataLoad(T item);
     }
 }

@@ -1,17 +1,21 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.android.annotations.NonNull;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentSearchBinding;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.CategoryPlace;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.PlaceListAdapter;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LineItemDecoratorSeparator;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.ItemPlaceListViewModel;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.SearchViewModel;
 
-/**
- * Created by Kevin Gomez on 3/20/2017.
- */
-
-public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchViewModel> {
+public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchViewModel>
+        implements SearchViewModel.SearchListListener<CategoryPlace>,
+        ItemPlaceListViewModel.PlaceListItemClickListener<Places> {
     private static final String TAG = SearchFragment.class.getName();
 
     public static final String SEARCH_REQUEST = "searchRequest";
@@ -31,7 +35,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
 
     @Override
     public SearchViewModel getViewModel() {
-        return SearchViewModel.getInstance(this, getSearchdomain());
+        return SearchViewModel.getInstance(this, getSearchdomain(), this);
     }
 
     @Override
@@ -43,6 +47,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
     public void initComponents() {
         super.initComponents();
         String searchRequest = getArguments().getString(SEARCH_REQUEST);
+        getBinding().searchRecycler.addItemDecoration(new LineItemDecoratorSeparator(getContext()));
         getViewModel().loadData(searchRequest);
     }
 
@@ -50,5 +55,16 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
     public void onStop() {
         super.onStop();
         getViewModel().onDestroyInstance();
+    }
+
+
+    @Override
+    public void onDataLoad(CategoryPlace item) {
+        getBinding().searchRecycler.setAdapter(new PlaceListAdapter(getContext(), item.getPlaceList(), this));
+    }
+
+    @Override
+    public void onItemClick(Places item) {
+        Log.d(TAG, item.toString());
     }
 }
