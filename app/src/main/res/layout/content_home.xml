@@ -17,7 +17,14 @@
             app:itemIconTint="@color/bottom_view_selector"
             app:itemTextColor="@color/bottom_view_selector"/>
 
+        <ImageView
+            android:id="@+id/mainBackground"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"/>
+
         <FrameLayout
+            android:layout_below="@id/mainBackground"
             android:id="@+id/mainContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

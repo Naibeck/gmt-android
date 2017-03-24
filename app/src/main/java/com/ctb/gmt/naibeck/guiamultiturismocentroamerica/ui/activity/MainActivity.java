@@ -10,6 +10,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityMainBinding;
@@ -37,6 +38,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     private HomeFragment mHome;
     private DirectoryFragment mDirectoryFragment;
 
+    private ImageView mMainBackground;
+
     private WeakReference<LocationDomain> mLocationWeakDomain;
 
     @Override
@@ -61,9 +64,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     @Override
     public void initComponents(final ActivityMainBinding binding) {
+        mMainBackground = getBinding().contentHome.mainBackground;
         bottomNavigationSetup();
-
         replaceFragment(R.id.mainContainer, getHomeFragment());
+        mMainBackground.setBackgroundResource(R.drawable.main_bg);
     }
 
     @Override
