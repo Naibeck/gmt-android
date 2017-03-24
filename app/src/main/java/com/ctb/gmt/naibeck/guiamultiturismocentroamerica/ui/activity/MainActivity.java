@@ -7,14 +7,9 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityMainBinding;
@@ -38,8 +33,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     public static final String WHERE_DO_WE_SHOP = "4";
     public static final String NITE_LIFE = "5";
 
-    private NavigationView mNavMenu;
-    private DrawerLayout mDrawerMenu;
     private MapFragment mMap;
     private HomeFragment mHome;
     private DirectoryFragment mDirectoryFragment;
@@ -68,10 +61,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     @Override
     public void initComponents(final ActivityMainBinding binding) {
-        mDrawerMenu = binding.homeDrawerLayout;
-        mNavMenu = binding.homeNavigationView;
-
-        setupNavMenu();
         bottomNavigationSetup();
 
         replaceFragment(R.id.mainContainer, getHomeFragment());
@@ -98,49 +87,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         super.onPause();
         getLocationDomain().removeLocationUpdates();
         getLocationDomain().removeInstance();
-    }
-
-    private void setupNavMenu() {
-        mNavMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.dondeQuedamos:
-                        goCategoryActivity(WHERE_WE_STAY);
-                        break;
-                    case R.id.dondeCompramos:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.miPueblo:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.queComemos:
-                        goCategoryActivity(WHAT_WE_EAT);
-                        break;
-                    case R.id.queHacemos:
-                        goCategoryActivity(WHAT_WE_DO);
-                        break;
-                }
-                return false;
-            }
-        });
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerMenu,
-                getToolbar(), R.string.open_drawer, R.string.close_drawer) {
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu();
-            }
-        };
-
-        mDrawerMenu.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
     }
 
     private void bottomNavigationSetup() {
@@ -216,6 +162,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     /**
      * Will launch settings screen in case Location providers are turned off
+     *
      * @return true if provider is enabled false if is not
      */
     public boolean isProviderEnabled() {
