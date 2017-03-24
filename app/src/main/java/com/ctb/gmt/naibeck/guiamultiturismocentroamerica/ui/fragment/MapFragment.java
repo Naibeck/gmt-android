@@ -1,7 +1,5 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
@@ -57,7 +55,6 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
     @Override
     public void initComponents() {
         super.initComponents();
-        getBinding().searchTextBar.setOnEditorActionListener(this);
         setupMapFragment();
     }
 
