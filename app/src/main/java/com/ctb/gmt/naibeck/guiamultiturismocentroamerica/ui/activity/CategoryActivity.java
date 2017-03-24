@@ -57,6 +57,12 @@ public class CategoryActivity extends BaseActivity<ActivityCategoryBinding, Void
             case MainActivity.WHERE_WE_STAY:
                 categoryTitle = getString(R.string.donde_quedamos);
                 break;
+            case MainActivity.NITE_LIFE:
+                categoryTitle = getString(R.string.nite_life);
+                break;
+            case MainActivity.WHERE_DO_WE_SHOP:
+                categoryTitle = getString(R.string.donde_compramos);
+                break;
             default:
                 categoryTitle = "Error";
         }
