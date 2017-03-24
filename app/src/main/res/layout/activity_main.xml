@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel" />
+            type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MainViewModel" />
     </data>
 
     <!--Everything inside this layout represent the main content-->
@@ -28,6 +29,7 @@
 
         <include
             android:id="@+id/contentHome"
-            layout="@layout/content_home" />
+            layout="@layout/content_home"
+            bind:viewModel="@{viewModel}"/>
     </android.support.design.widget.CoordinatorLayout>
 </layout>

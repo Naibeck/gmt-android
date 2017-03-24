@@ -9,8 +9,12 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityMainBinding;
@@ -18,12 +22,13 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.DirectoryFr
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.HomeFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MainViewModel;
 import com.google.android.gms.common.ConnectionResult;
 
 import java.lang.ref.WeakReference;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
-        implements LocationDomain.LocationDomainListener {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
+        implements LocationDomain.LocationDomainListener, TextView.OnEditorActionListener {
 
     private static final String TAG = MainActivity.class.getName();
 
@@ -48,13 +53,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     }
 
     @Override
-    public Void getViewModel() {
-        return null;
+    public MainViewModel getViewModel() {
+        return MainViewModel.getInstance();
     }
 
     @Override
     public void setViewModelToBinding() {
-
+        getBinding().setViewModel(getViewModel());
     }
 
     @Override
@@ -68,6 +73,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         bottomNavigationSetup();
         replaceFragment(R.id.mainContainer, getHomeFragment());
         mMainBackground.setBackgroundResource(R.drawable.main_bg);
+        getBinding().contentHome.searchTextBar.setOnEditorActionListener(this);
+        getBinding().contentHome.searchMapIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getViewModel().goSearchActivity(getContext());
+            }
+        });
     }
 
     @Override
@@ -83,6 +95,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         super.onStop();
         getLocationDomain().handleOnStop();
         getGmtPreferences().removeInstance();
+        getViewModel().removeIsntance();
         mDirectoryFragment = null;
     }
 
@@ -204,5 +217,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     @Override
     public void onLocationChanged(Location location) {
         storeLocation(location);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            getViewModel().goSearchActivity(this);
+            return true;
+        }
+        return false;
     }
 }
