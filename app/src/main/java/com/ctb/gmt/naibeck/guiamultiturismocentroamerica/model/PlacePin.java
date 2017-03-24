@@ -20,6 +20,9 @@ public class PlacePin implements Parcelable {
 
     @SerializedName("placeLon")
     private double mLon;
+    
+    @SerializedName("MapIcon")
+    private int mMapIcon;
 
     @SerializedName("Tipo")
     private List<PinType> mPinType;
@@ -28,42 +31,25 @@ public class PlacePin implements Parcelable {
         return mId;
     }
 
-    public void setId(int mId) {
-        this.mId = mId;
-    }
-
     public String getName() {
         return mName;
-    }
-
-    public void setName(String mName) {
-        this.mName = mName;
     }
 
     public double getLat() {
         return mLat;
     }
 
-    public void setLat(double mLat) {
-        this.mLat = mLat;
-    }
-
     public double getLon() {
         return mLon;
     }
 
-    public void setLon(double mLon) {
-        this.mLon = mLon;
+    public int getMapIcon() {
+        return mMapIcon;
     }
 
     public List<PinType> getPinType() {
         return mPinType;
     }
-
-    public void setPinType(List<PinType> mPinType) {
-        this.mPinType = mPinType;
-    }
-
 
     @Override
     public int describeContents() {
@@ -76,6 +62,7 @@ public class PlacePin implements Parcelable {
         dest.writeString(this.mName);
         dest.writeDouble(this.mLat);
         dest.writeDouble(this.mLon);
+        dest.writeInt(this.mMapIcon);
         dest.writeTypedList(this.mPinType);
     }
 
@@ -87,6 +74,7 @@ public class PlacePin implements Parcelable {
         this.mName = in.readString();
         this.mLat = in.readDouble();
         this.mLon = in.readDouble();
+        this.mMapIcon = in.readInt();
         this.mPinType = in.createTypedArrayList(PinType.CREATOR);
     }
 
@@ -101,15 +89,4 @@ public class PlacePin implements Parcelable {
             return new PlacePin[size];
         }
     };
-
-    @Override
-    public String toString() {
-        return "PlacePin{" +
-                "mId=" + mId +
-                ", mName='" + mName + '\'' +
-                ", mLat=" + mLat +
-                ", mLon=" + mLon +
-                ", mPinType=" + mPinType +
-                '}';
-    }
 }

@@ -1,5 +1,7 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
@@ -23,8 +25,12 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
         implements TextView.OnEditorActionListener,
         MapViewModel.PlacePinLoadListener<PlacePin> {
     private static final String TAG = MapFragment.class.getName();
-
     private static final float ZOOM_LEVEL = 15.0f;
+    private static final int WHAT_WE_EAT = 1;
+    private static final int WHERE_WE_STAY = 2;
+    private static final int WHAT_WE_DO = 3;
+    private static final int WHERE_DO_WE_SHOP = 4;
+    private static final int NITE_LIFE = 5;
 
     public static MapFragment getInstance() {
         return new MapFragment();
@@ -78,7 +84,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
 
     private MarkerOptions markersSetup(@NonNull LatLng markerPosition, @DrawableRes int resource) {
         return new MarkerOptions()
-//                .icon(getViewModel().getIcon(resource)) 
+                .icon(getViewModel().getIcon(resource))
                 .position(markerPosition);
     }
 
@@ -97,7 +103,25 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
         for (PlacePin placePin :  items) {
             LatLng latLng = new LatLng(placePin.getLat(), placePin.getLon());
             if (mGoogleMap != null) {
-                mGoogleMap.addMarker(markersSetup(latLng, R.drawable.map_ic)
+                int resources = 0;
+                switch (placePin.getMapIcon()) {
+                    case WHAT_WE_EAT:
+                        resources = R.drawable.phrestaurante;
+                        break;
+                    case WHERE_WE_STAY:
+                        resources = R.drawable.phhotel;
+                        break;
+                    case WHAT_WE_DO:
+                        resources = R.drawable.phactividades;
+                        break;
+                    case WHERE_DO_WE_SHOP:
+                        resources = R.drawable.phcompras;
+                        break;
+                    case NITE_LIFE:
+                        resources = R.drawable.phnocturna;
+                        break;
+                }
+                mGoogleMap.addMarker(markersSetup(latLng, resources)
                         .title(placePin.getName()));
             }
         }
