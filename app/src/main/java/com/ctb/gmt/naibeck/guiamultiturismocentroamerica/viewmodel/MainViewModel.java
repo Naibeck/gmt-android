@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.SearchActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.SearchFragment;
@@ -35,10 +36,17 @@ public class MainViewModel extends BaseObservable {
     }
 
     public void goSearchActivity(Context context) {
-        Intent intent = new Intent(context, SearchActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(SearchFragment.SEARCH_REQUEST, getSearchContent());
-        context.startActivity(intent);
+        if (getSearchContent() != null) {
+            if (!getSearchContent().equals("")) {
+                Intent intent = new Intent(context, SearchActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(SearchFragment.SEARCH_REQUEST, getSearchContent());
+                context.startActivity(intent);
+            }
+        } else {
+            Toast.makeText(context, "Ingresa un valor para buscar", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void removeIsntance() {

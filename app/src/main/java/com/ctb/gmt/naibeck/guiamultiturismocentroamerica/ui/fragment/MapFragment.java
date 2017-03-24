@@ -21,8 +21,8 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
     private static final String TAG = MapFragment.class.getName();
     private static final float ZOOM_LEVEL = 15.0f;
     private static final int WHAT_WE_EAT = 1;
-    private static final int WHERE_WE_STAY = 2;
-    private static final int WHAT_WE_DO = 3;
+    private static final int WHAT_WE_DO = 2;
+    private static final int WHERE_WE_STAY = 3;
     private static final int WHERE_DO_WE_SHOP = 4;
     private static final int NITE_LIFE = 5;
 
