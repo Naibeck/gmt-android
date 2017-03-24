@@ -33,8 +33,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     public static final String SELECTED_CATEGORY = "selectedCategory";
     public static final String WHAT_WE_EAT = "1";
-    public static final String WHERE_WE_STAY = "3";
     public static final String WHAT_WE_DO = "2";
+    public static final String WHERE_WE_STAY = "3";
+    public static final String WHERE_DO_WE_SHOP = "4";
+    public static final String NITE_LIFE = "5";
 
     private NavigationView mNavMenu;
     private DrawerLayout mDrawerMenu;
