@@ -47,6 +47,12 @@
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/hospedaje" />
 
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/menuhotel"
+                                android:layout_centerInParent="true"/>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -68,6 +74,12 @@
                                 android:layout_marginTop="8dp"
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/noche" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/menunocturna"
+                                android:layout_centerInParent="true"/>
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -103,6 +115,12 @@
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/comida" />
 
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/menurestaurante"
+                                android:layout_centerInParent="true"/>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -125,6 +143,12 @@
                                 android:layout_marginTop="8dp"
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/compra" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/menutiendas"
+                                android:layout_centerInParent="true"/>
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -153,6 +177,12 @@
                     android:layout_marginTop="8dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/actividades" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menuactividades"
+                    android:layout_centerInParent="true"/>
 
                 <TextView
                     android:layout_width="match_parent"
