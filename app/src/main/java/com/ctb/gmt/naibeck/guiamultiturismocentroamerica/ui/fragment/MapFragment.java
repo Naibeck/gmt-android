@@ -2,9 +2,6 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentMapBinding;
@@ -20,8 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 
 public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
-        implements TextView.OnEditorActionListener,
-        MapViewModel.PlacePinLoadListener<PlacePin> {
+        implements MapViewModel.PlacePinLoadListener<PlacePin> {
     private static final String TAG = MapFragment.class.getName();
     private static final float ZOOM_LEVEL = 15.0f;
     private static final int WHAT_WE_EAT = 1;
@@ -86,18 +82,8 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
     }
 
     @Override
-    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-        if (i == EditorInfo.IME_ACTION_SEARCH) {
-            //TODO: Change this method to submit a search
-            getViewModel().goSearchActivity();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public void onPinLoaded(List<PlacePin> items) {
-        for (PlacePin placePin :  items) {
+        for (PlacePin placePin : items) {
             LatLng latLng = new LatLng(placePin.getLat(), placePin.getLon());
             if (mGoogleMap != null) {
                 int resources = 0;
