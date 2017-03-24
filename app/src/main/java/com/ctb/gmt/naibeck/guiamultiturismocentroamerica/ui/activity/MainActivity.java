@@ -7,14 +7,14 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityMainBinding;
@@ -22,12 +22,13 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.DirectoryFr
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.HomeFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MainViewModel;
 import com.google.android.gms.common.ConnectionResult;
 
 import java.lang.ref.WeakReference;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
-        implements LocationDomain.LocationDomainListener {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
+        implements LocationDomain.LocationDomainListener, TextView.OnEditorActionListener {
 
     private static final String TAG = MainActivity.class.getName();
 
@@ -38,11 +39,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     public static final String WHERE_DO_WE_SHOP = "4";
     public static final String NITE_LIFE = "5";
 
-    private NavigationView mNavMenu;
-    private DrawerLayout mDrawerMenu;
     private MapFragment mMap;
     private HomeFragment mHome;
     private DirectoryFragment mDirectoryFragment;
+
+    private ImageView mMainBackground;
 
     private WeakReference<LocationDomain> mLocationWeakDomain;
 
@@ -52,13 +53,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     }
 
     @Override
-    public Void getViewModel() {
-        return null;
+    public MainViewModel getViewModel() {
+        return MainViewModel.getInstance();
     }
 
     @Override
     public void setViewModelToBinding() {
-
+        getBinding().setViewModel(getViewModel());
     }
 
     @Override
@@ -68,13 +69,17 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     @Override
     public void initComponents(final ActivityMainBinding binding) {
-        mDrawerMenu = binding.homeDrawerLayout;
-        mNavMenu = binding.homeNavigationView;
-
-        setupNavMenu();
+        mMainBackground = getBinding().contentHome.mainBackground;
         bottomNavigationSetup();
-
         replaceFragment(R.id.mainContainer, getHomeFragment());
+        mMainBackground.setBackgroundResource(R.drawable.main_bg);
+        getBinding().contentHome.searchTextBar.setOnEditorActionListener(this);
+        getBinding().contentHome.searchMapIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getViewModel().goSearchActivity(getContext());
+            }
+        });
     }
 
     @Override
@@ -90,6 +95,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         super.onStop();
         getLocationDomain().handleOnStop();
         getGmtPreferences().removeInstance();
+        getViewModel().removeIsntance();
         mDirectoryFragment = null;
     }
 
@@ -98,49 +104,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
         super.onPause();
         getLocationDomain().removeLocationUpdates();
         getLocationDomain().removeInstance();
-    }
-
-    private void setupNavMenu() {
-        mNavMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.dondeQuedamos:
-                        goCategoryActivity(WHERE_WE_STAY);
-                        break;
-                    case R.id.dondeCompramos:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.miPueblo:
-                        Toast.makeText(getContext(), "Item", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.queComemos:
-                        goCategoryActivity(WHAT_WE_EAT);
-                        break;
-                    case R.id.queHacemos:
-                        goCategoryActivity(WHAT_WE_DO);
-                        break;
-                }
-                return false;
-            }
-        });
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerMenu,
-                getToolbar(), R.string.open_drawer, R.string.close_drawer) {
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu();
-            }
-        };
-
-        mDrawerMenu.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
     }
 
     private void bottomNavigationSetup() {
@@ -216,6 +179,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
 
     /**
      * Will launch settings screen in case Location providers are turned off
+     *
      * @return true if provider is enabled false if is not
      */
     public boolean isProviderEnabled() {
@@ -253,5 +217,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Void>
     @Override
     public void onLocationChanged(Location location) {
         storeLocation(location);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            getViewModel().goSearchActivity(this);
+            return true;
+        }
+        return false;
     }
 }

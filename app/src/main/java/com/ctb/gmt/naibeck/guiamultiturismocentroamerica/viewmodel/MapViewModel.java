@@ -1,17 +1,13 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel;
 
-import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.PlacePinDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.PlaceCoordinate;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.SearchActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment;
-import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.SearchFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.GmtSharedPreferences;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -32,8 +28,6 @@ public class MapViewModel extends BaseObservable {
     private GmtSharedPreferences mSharedPreferences;
     private PlacePinDomain mPlacePinDomain;
     private PlacePinLoadListener mPlacePinLoadListener;
-
-    private String mSearchContent;
 
     public static MapViewModel getInstance(@NonNull MapFragment fragment,
                                            @NonNull GmtSharedPreferences preferences,
@@ -57,14 +51,6 @@ public class MapViewModel extends BaseObservable {
         this.mPlacePinLoadListener = mPlacePinLoadListener;
     }
 
-    public String getSearchContent() {
-        return mSearchContent;
-    }
-
-    public void setSearchContent(String searchContent) {
-        this.mSearchContent = searchContent;
-    }
-
     public LatLng getLatLngFromUser() {
         if (mSharedPreferences.getLastStoredLocation() != null) {
             return new LatLng(mSharedPreferences.getLastStoredLocation().getLatitude(),
@@ -75,12 +61,6 @@ public class MapViewModel extends BaseObservable {
 
     public BitmapDescriptor getIcon(@DrawableRes int drawableResource) {
         return BitmapDescriptorFactory.fromResource(drawableResource);
-    }
-
-    public void goSearchActivity() {
-        Intent intent = new Intent(mFragment.getContext(), SearchActivity.class);
-        intent.putExtra(SearchFragment.SEARCH_REQUEST, getSearchContent());
-        mFragment.startActivity(intent);
     }
 
     public void pinsLoaded() {

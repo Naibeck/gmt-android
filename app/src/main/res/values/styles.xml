@@ -35,4 +35,10 @@
         <item name="android:paddingBottom">@dimen/header_view_vertical_margin</item>
         <item name="android:background">@drawable/rounded_primary</item>
     </style>
+
+    <style name="EditTextTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+    </style>
 </resources>
