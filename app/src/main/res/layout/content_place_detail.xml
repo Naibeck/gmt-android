@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout >
+<layout>
 
     <data>
 
@@ -13,19 +13,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@android:color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="@dimen/view_vertical_margin"
-            app:logoUrl="@{viewModel.placeLogo}" />
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="@dimen/view_vertical_margin"
+                android:scaleType="centerCrop"
+                app:logoUrl="@{viewModel.placeLogo}" />
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                app:logoUrl="@{viewModel.placeLogo}" />
+        </RelativeLayout>
+
 
         <RelativeLayout
-            android:paddingStart="@dimen/activity_horizontal_margin"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,6 +64,10 @@
                     style="@style/GeneralTextView"
                     android:layout_marginBottom="@dimen/view_vertical_margin"
                     android:text="@{viewModel.placeAddress}" />
+
+                <include
+                    android:id="@+id/contentGalleryDetail"
+                    layout="@layout/content_detail_gallery" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

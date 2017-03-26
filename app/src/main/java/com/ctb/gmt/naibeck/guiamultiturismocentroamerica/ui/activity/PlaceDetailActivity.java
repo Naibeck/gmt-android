@@ -1,11 +1,14 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity;
 
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.ActivityPlaceDetailBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.Places;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.adapter.DetailGalleryAdapter;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.CategoryFragment;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceDetailViewModel;
 
@@ -13,6 +16,7 @@ public class PlaceDetailActivity extends BaseActivity<ActivityPlaceDetailBinding
     private static final String TAG = PlaceDetailActivity.class.getName();
 
     private Places mPlace;
+    private RecyclerView mGallery;
 
     @Override
     public int getLayout() {
@@ -43,6 +47,9 @@ public class PlaceDetailActivity extends BaseActivity<ActivityPlaceDetailBinding
     public void initComponents(ActivityPlaceDetailBinding binding) {
         super.initComponents(binding);
         setTitle(mPlace.getName());
+        mGallery = getBinding().placeDetailContent.contentGalleryDetail.contentGalleryList;
+        mGallery.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mGallery.setAdapter(new DetailGalleryAdapter(mPlace.getGalleryImage()));
     }
 
     private Places getPlace() {
