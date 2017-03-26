@@ -3,11 +3,14 @@ package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Kevin Gomez on 3/25/2017.
  */
 
 public class GalleryImage implements Parcelable {
+    @SerializedName("imageurl")
     private String mImgUrl;
 
     public String getImgUrl() {

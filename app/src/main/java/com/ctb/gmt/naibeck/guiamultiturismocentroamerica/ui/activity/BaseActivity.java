@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -110,6 +111,11 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
 
     public Intent goNextActivity(@NonNull Class<?> activity) {
         return new Intent(this, activity);
+    }
+
+    public void openUrl(@NonNull String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 
     private GmtClient getClient() {
