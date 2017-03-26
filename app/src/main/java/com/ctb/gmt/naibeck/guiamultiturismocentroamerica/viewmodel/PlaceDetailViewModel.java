@@ -18,6 +18,7 @@ public class PlaceDetailViewModel extends BaseObservable {
     private String mPlaceDescription;
     private String mPlaceAddress;
     private String mPlaceLogo;
+    private String mPlaceHeader;
 
     public PlaceDetailViewModel(PlaceDetailActivity mActivity, Places mPlace) {
         this.mActivity = mActivity;
@@ -27,6 +28,7 @@ public class PlaceDetailViewModel extends BaseObservable {
         this.mPlaceDescription = mPlace.getDescription();
         this.mPlaceAddress = mPlace.getAddress();
         this.mPlaceLogo = mPlace.getLogo();
+        this.mPlaceHeader = mPlace.getGalleryImage().get(0).getImgUrl();
     }
 
     public static PlaceDetailViewModel getInstance(PlaceDetailActivity activity,
@@ -77,6 +79,11 @@ public class PlaceDetailViewModel extends BaseObservable {
     @Bindable
     public void setPlaceLogo(String mPlaceLogo) {
         this.mPlaceLogo = mPlaceLogo;
+    }
+
+    @Bindable
+    public String getPlaceHeader() {
+        return mPlaceHeader;
     }
 
     public void onDestroyInstance() {

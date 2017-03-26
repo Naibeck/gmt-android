@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,45 +9,81 @@
             type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.PlaceDetailViewModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:background="@android:color/white">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="@dimen/view_vertical_margin"
-            app:logoUrl="@{viewModel.placeLogo}" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
-            android:paddingStart="@dimen/activity_horizontal_margin"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
 
-            <LinearLayout
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="@dimen/view_vertical_margin"
+                    android:scaleType="centerCrop"
+                    app:logoUrl="@{viewModel.placeHeader}" />
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:logoUrl="@{viewModel.placeLogo}" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin">
 
-                <TextView
-                    style="@style/CategoryTextView"
-                    android:layout_marginBottom="@dimen/view_vertical_margin"
-                    android:text="@{viewModel.placeName}" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <TextView
-                    style="@style/GeneralTextView"
-                    android:layout_marginBottom="@dimen/view_vertical_margin"
-                    android:text="@{viewModel.placeDescription}" />
+                    <TextView
+                        style="@style/CategoryTextView"
+                        android:layout_marginBottom="@dimen/view_vertical_margin"
+                        android:text="@{viewModel.placeName}" />
 
-                <TextView
-                    style="@style/GeneralTextView"
-                    android:layout_marginBottom="@dimen/view_vertical_margin"
-                    android:text="@{viewModel.placeAddress}" />
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+                    <TextView
+                        style="@style/GeneralTextView"
+                        android:layout_marginBottom="@dimen/view_vertical_margin"
+                        android:text="@{viewModel.placeDescription}" />
+
+                    <TextView
+                        style="@style/GeneralTextView"
+                        android:layout_marginBottom="@dimen/view_vertical_margin"
+                        android:text="@{viewModel.placeAddress}" />
+
+                    <include
+                        android:id="@+id/contentGalleryDetail"
+                        layout="@layout/content_detail_gallery" />
+
+                    <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#333333"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp" />
+
+                    <include
+                        android:id="@+id/contentSocialDetail"
+                        layout="@layout/content_detail_socials" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

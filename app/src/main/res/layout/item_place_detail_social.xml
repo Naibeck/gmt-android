@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.DetailSocialItemViewModel" />
+    </data>
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="4dp"
+        app:logoSocial="@{viewModel.socialId}"
+        android:onClick="@{viewModel.onSocialClick}"/>
+</layout>

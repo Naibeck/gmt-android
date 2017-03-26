@@ -32,70 +32,44 @@ public class Places implements Parcelable {
     @SerializedName("socials")
     private List<Socials> mSocialList;
 
+    @SerializedName("images")
+    private List<GalleryImage> mGalleryImage;
+
     public int getId() {
         return mId;
-    }
-
-    public void setId(int mId) {
-        this.mId = mId;
     }
 
     public String getName() {
         return mName;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
-    }
-
     public String getDescription() {
         return mDescription;
-    }
-
-    public void setDescription(String mDescription) {
-        this.mDescription = mDescription;
     }
 
     public String getAddress() {
         return mAddress;
     }
 
-    public void setAddress(String mAddress) {
-        this.mAddress = mAddress;
-    }
-
     public String getLogo() {
         return mLogo;
-    }
-
-    public void setLogo(String mLogo) {
-        this.mLogo = mLogo;
     }
 
     public String getLatitude() {
         return mLatitude;
     }
 
-    public void setLatitude(String mLatitude) {
-        this.mLatitude = mLatitude;
-    }
-
     public String getLongitude() {
         return mLongitude;
-    }
-
-    public void setLongitude(String mLongitude) {
-        this.mLongitude = mLongitude;
     }
 
     public List<Socials> getSocialList() {
         return mSocialList;
     }
 
-    public void setSocialList(List<Socials> mSocialList) {
-        this.mSocialList = mSocialList;
+    public List<GalleryImage> getGalleryImage() {
+        return mGalleryImage;
     }
-
 
     @Override
     public int describeContents() {
@@ -112,6 +86,7 @@ public class Places implements Parcelable {
         dest.writeString(this.mLatitude);
         dest.writeString(this.mLongitude);
         dest.writeTypedList(this.mSocialList);
+        dest.writeTypedList(this.mGalleryImage);
     }
 
     public Places() {
@@ -126,6 +101,7 @@ public class Places implements Parcelable {
         this.mLatitude = in.readString();
         this.mLongitude = in.readString();
         this.mSocialList = in.createTypedArrayList(Socials.CREATOR);
+        this.mGalleryImage = in.createTypedArrayList(GalleryImage.CREATOR);
     }
 
     public static final Creator<Places> CREATOR = new Creator<Places>() {
@@ -151,6 +127,7 @@ public class Places implements Parcelable {
                 ", mLatitude='" + mLatitude + '\'' +
                 ", mLongitude='" + mLongitude + '\'' +
                 ", mSocialList=" + mSocialList +
+                ", mGalleryImage=" + mGalleryImage +
                 '}';
     }
 }
