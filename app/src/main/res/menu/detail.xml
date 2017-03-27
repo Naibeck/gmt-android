@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/call"
+        android:icon="@android:drawable/stat_sys_phone_call"
+        android:title="call"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="map"
+        app:showAsAction="always"/>
+</menu>

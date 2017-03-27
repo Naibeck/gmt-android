@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <!-- Location permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -47,6 +49,8 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".ui.activity.MainActivity"
             android:label="@string/results"/>
+        <activity android:name=".ui.activity.GalleryItemActivity"
+            android:parentActivityName=".ui.activity.PlaceDetailActivity" />
     </application>
 
 </manifest>

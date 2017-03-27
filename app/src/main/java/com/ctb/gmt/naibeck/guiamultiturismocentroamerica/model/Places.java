@@ -22,6 +22,9 @@ public class Places implements Parcelable {
 
     @SerializedName("placeLogo")
     private String mLogo;
+    
+    @SerializedName("placePhone")
+    private String mPhone;
 
     @SerializedName("placeLatitud")
     private String mLatitude;
@@ -55,6 +58,10 @@ public class Places implements Parcelable {
         return mLogo;
     }
 
+    public String getPhone() {
+        return mPhone;
+    }
+
     public String getLatitude() {
         return mLatitude;
     }
@@ -83,6 +90,7 @@ public class Places implements Parcelable {
         dest.writeString(this.mDescription);
         dest.writeString(this.mAddress);
         dest.writeString(this.mLogo);
+        dest.writeString(this.mPhone);
         dest.writeString(this.mLatitude);
         dest.writeString(this.mLongitude);
         dest.writeTypedList(this.mSocialList);
@@ -98,6 +106,7 @@ public class Places implements Parcelable {
         this.mDescription = in.readString();
         this.mAddress = in.readString();
         this.mLogo = in.readString();
+        this.mPhone = in.readString();
         this.mLatitude = in.readString();
         this.mLongitude = in.readString();
         this.mSocialList = in.createTypedArrayList(Socials.CREATOR);
@@ -124,6 +133,7 @@ public class Places implements Parcelable {
                 ", mDescription='" + mDescription + '\'' +
                 ", mAddress='" + mAddress + '\'' +
                 ", mLogo='" + mLogo + '\'' +
+                ", mPhone='" + mPhone + '\'' +
                 ", mLatitude='" + mLatitude + '\'' +
                 ", mLongitude='" + mLongitude + '\'' +
                 ", mSocialList=" + mSocialList +

@@ -118,6 +118,18 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         startActivity(intent);
     }
 
+    public void openGoogleMaps(String latitude, String longitude) {
+        Intent map = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("geo:" + latitude + "," + longitude + "?z=500"));
+        startActivity(map);
+    }
+
+    public void openDialer(String phone) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + phone));
+        startActivity(intent);
+    }
+
     private GmtClient getClient() {
         return GmtClient.getInstance(this);
     }

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.DetailGalleryItemViewModel" />
     </data>
-    <RelativeLayout
-        android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_margin="4dp"
-            app:logoUrl="@{viewModel.galleryImageUrl}"
-            android:scaleType="centerCrop" />
-    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_margin="4dp"
+        android:scaleType="centerCrop"
+        app:logoUrl="@{viewModel.galleryImageUrl}"
+        android:onClick="@{viewModel.onGalleryClick}"/>
+
 </layout>

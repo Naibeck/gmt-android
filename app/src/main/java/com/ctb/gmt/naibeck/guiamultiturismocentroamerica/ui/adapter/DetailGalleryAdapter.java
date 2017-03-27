@@ -19,9 +19,11 @@ import java.util.List;
 
 public class DetailGalleryAdapter extends RecyclerView.Adapter<DetailGalleryAdapter.ViewHolder> {
     private List<GalleryImage> mGalleryImageList;
+    private DetailGalleryItemViewModel.OnGalleryItemClickListener<String> mOnGalleryItemClickListener;
 
-    public DetailGalleryAdapter(List<GalleryImage> mGalleryImageList) {
+    public DetailGalleryAdapter(List<GalleryImage> mGalleryImageList, DetailGalleryItemViewModel.OnGalleryItemClickListener<String> mOnGalleryItemClickListener) {
         this.mGalleryImageList = mGalleryImageList;
+        this.mOnGalleryItemClickListener = mOnGalleryItemClickListener;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class DetailGalleryAdapter extends RecyclerView.Adapter<DetailGalleryAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         GalleryImage galleryImage = mGalleryImageList.get(position);
-        holder.binding.setViewModel(new DetailGalleryItemViewModel(galleryImage));
+        holder.binding.setViewModel(new DetailGalleryItemViewModel(galleryImage, mOnGalleryItemClickListener));
     }
 
     @Override
