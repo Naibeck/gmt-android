@@ -3,7 +3,7 @@
     <color name="colorPrimary">#ffc80b</color>
     <color name="colorPrimaryDark">#040707</color>
     <color name="primary">#ffedb1</color>
-    <color name="colorAccent">#040707 </color>
+    <color name="colorAccent">#ffc80b</color>
     <color name="spectra">#2f4f4f</color>
     <color name="outrageousOrange">#ffc80b</color>
 </resources>

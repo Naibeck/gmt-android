@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GmtClient {
     private static final String TAG = GmtClient.class.getName();
-    private static final String BASE_URL = "http://www.codetobe.com/guiamultiturismoapp/";
+    private static final String BASE_URL = "http://www.guiamultiturismo.com/app/";
 
     private Context mContext;
     private CategoryService mCategoryService;

@@ -22,7 +22,6 @@ public class CategoryViewModel extends BaseObservable {
     private static CategoryViewModel sInstance;
 
     private CategoryFragment mCategoryFragment;
-    private GmtSharedPreferences mGmtSharedPreferences;
     private CategoryListListener<TourismCategory> mCategoryListListener;
     private CategoryDomain mCategoryDomain;
 
@@ -30,22 +29,19 @@ public class CategoryViewModel extends BaseObservable {
     private int mConnectionVisibility;
 
     public static CategoryViewModel getInstance(@NonNull CategoryFragment fragment,
-                                                @NonNull GmtSharedPreferences preferences,
                                                 @NonNull CategoryListListener<TourismCategory> listener,
                                                 @NonNull CategoryDomain domain) {
         if (sInstance != null) {
             return sInstance;
         }
-        sInstance = new CategoryViewModel(fragment, preferences, listener, domain);
+        sInstance = new CategoryViewModel(fragment, listener, domain);
         return sInstance;
     }
 
     private CategoryViewModel(CategoryFragment mCategoryFragment,
-                              GmtSharedPreferences mGmtSharedPreferences,
                               CategoryListListener<TourismCategory> mCategoryListListener,
                               CategoryDomain mCategoryDomain) {
         this.mCategoryFragment = mCategoryFragment;
-        this.mGmtSharedPreferences = mGmtSharedPreferences;
         this.mCategoryListListener = mCategoryListListener;
         this.mCategoryDomain = mCategoryDomain;
         this.mConnectionVisibility = View.GONE;

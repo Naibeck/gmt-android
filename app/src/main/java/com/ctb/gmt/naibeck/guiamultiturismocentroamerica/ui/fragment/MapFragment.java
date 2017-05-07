@@ -1,11 +1,15 @@
 package com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.databinding.FragmentMapBinding;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.model.PlacePin;
+import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MapViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +29,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
     private static final int WHERE_WE_STAY = 3;
     private static final int WHERE_DO_WE_SHOP = 4;
     private static final int NITE_LIFE = 5;
+    private static final int TOURISTIC_PLACE = 6;
 
     public static MapFragment getInstance() {
         return new MapFragment();
@@ -39,7 +44,7 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
 
     @Override
     public MapViewModel getViewModel() {
-        return MapViewModel.getInstance(this, getGmtPreferences(), getPlacePinDomain(), this);
+        return MapViewModel.getInstance(this, getPlacePinDomain(), this);
     }
 
 
@@ -63,17 +68,20 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
             public void onMapReady(GoogleMap googleMap) {
                 mGoogleMap = googleMap;
                 getViewModel().pinsLoaded();
-                if (getGmtPreferences().getLastStoredLocation() != null) {
-                    if (isLocationPermissionGranted()) {
-                        googleMap.setMyLocationEnabled(true);
-                    }
-                    googleMap.getUiSettings().setMyLocationButtonEnabled(false);
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getViewModel().getLatLngFromUser(),
-                            ZOOM_LEVEL));
+
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
                 }
-            }
-        });
-    }
+                googleMap.setMyLocationEnabled(true);
+                googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+                LatLng latLng = new LatLng(MainActivity.activityLocationDomain().getLastKnownLocation().getLatitude(), MainActivity.activityLocationDomain().getLastKnownLocation().getLongitude());
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,
+                        ZOOM_LEVEL));
+        }
+    });
+}
 
     private MarkerOptions markersSetup(@NonNull LatLng markerPosition, @DrawableRes int resource) {
         return new MarkerOptions()
@@ -95,13 +103,16 @@ public class MapFragment extends BaseFragment<FragmentMapBinding, MapViewModel>
                         resources = R.drawable.phhotel;
                         break;
                     case WHAT_WE_DO:
-                        resources = R.drawable.phactividades;
+                        resources = R.drawable.phquehacemos;
                         break;
                     case WHERE_DO_WE_SHOP:
                         resources = R.drawable.phcompras;
                         break;
                     case NITE_LIFE:
                         resources = R.drawable.phnocturna;
+                        break;
+                    case TOURISTIC_PLACE:
+                        resources = R.drawable.lugar_turistico;
                         break;
                 }
                 mGoogleMap.addMarker(markersSetup(latLng, resources)

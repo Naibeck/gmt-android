@@ -97,9 +97,9 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM> extends Fragm
         return new Intent(getContext(), activity);
     }
 
-    public GmtSharedPreferences getGmtPreferences() {
-        return GmtSharedPreferences.getInstance(getContext());
-    }
+//    public GmtSharedPreferences getGmtPreferences() {
+//        return GmtSharedPreferences.getInstance(getContext());
+//    }
 
     public GmtClient getGmtClient() {
         return GmtClient.getInstance(getContext());

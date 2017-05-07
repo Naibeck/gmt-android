@@ -185,7 +185,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         return mLocationDomain;
     }
 
-    public GmtSharedPreferences getGmtPreferences() {
-        return GmtSharedPreferences.getInstance(this);
-    }
+//    public GmtSharedPreferences getGmtPreferences() {
+//        return GmtSharedPreferences.getInstance(this);
+//    }
 }

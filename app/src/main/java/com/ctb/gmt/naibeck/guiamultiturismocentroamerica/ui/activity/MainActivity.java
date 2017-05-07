@@ -7,13 +7,11 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.R;
@@ -24,6 +22,7 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.fragment.MapFragment
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.MainViewModel;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.lang.ref.WeakReference;
 
@@ -38,14 +37,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     public static final String WHERE_WE_STAY = "3";
     public static final String WHERE_DO_WE_SHOP = "4";
     public static final String NITE_LIFE = "5";
+    public static final String TOURISTIC_PLACE = "6";
 
+    private static LocationDomain mLocationDomain;
     private MapFragment mMap;
     private HomeFragment mHome;
     private DirectoryFragment mDirectoryFragment;
 
-    private ImageView mMainBackground;
-
-    private WeakReference<LocationDomain> mLocationWeakDomain;
+    private static WeakReference<LocationDomain> mLocationWeakDomain;
 
     @Override
     public int getLayout() {
@@ -62,17 +61,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         getBinding().setViewModel(getViewModel());
     }
 
-    @Override
-    public Toolbar getToolbar() {
-        return getBinding().homeToolbar.toolbar;
-    }
+//    @Override
+//    public Toolbar getToolbar() {
+//        return getBinding().homeToolbar.toolbar;
+//    }
 
     @Override
     public void initComponents(final ActivityMainBinding binding) {
-        mMainBackground = getBinding().contentHome.mainBackground;
         bottomNavigationSetup();
         replaceFragment(R.id.mainContainer, getHomeFragment());
-        mMainBackground.setBackgroundResource(R.drawable.main_bg);
         getBinding().contentHome.searchTextBar.setOnEditorActionListener(this);
         getBinding().contentHome.searchMapIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +91,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     protected void onStop() {
         super.onStop();
         getLocationDomain().handleOnStop();
-        getGmtPreferences().removeInstance();
         getViewModel().removeIsntance();
         mDirectoryFragment = null;
     }
@@ -160,6 +156,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     private LocationDomain getLocationDomain() {
+        mLocationDomain = getLocationDomain(this);
         mLocationWeakDomain = new WeakReference<>(getLocationDomain(this));
         return mLocationWeakDomain.get();
     }
@@ -170,9 +167,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
      */
     private void storeLocation(@NonNull Location location) {
         if (isProviderEnabled()) {
-            getGmtPreferences().putLastStoredLocation(location);
         } else {
-            //Launch settings to enable provider
+
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
     }
@@ -226,5 +222,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
             return true;
         }
         return false;
+    }
+
+    public static LocationDomain activityLocationDomain() {
+        return mLocationDomain;
     }
 }

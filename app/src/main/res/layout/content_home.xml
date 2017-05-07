@@ -19,22 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             app:itemIconTint="@color/bottom_view_selector"
             app:itemTextColor="@color/bottom_view_selector"
             app:menu="@menu/bottom_navigation" />
 
-        <ImageView
+        <RelativeLayout
             android:id="@+id/mainBackground"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:background="@color/colorPrimaryDark"
-            android:scaleType="centerCrop" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
+            android:padding="16dp"
+            android:background="@color/colorPrimaryDark">
 
             <ImageView
                 android:id="@+id/searchMapIcon"

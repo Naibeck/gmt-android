@@ -118,4 +118,12 @@ public class PlaceDetailActivity extends BaseActivity<ActivityPlaceDetailBinding
         getMenuInflater().inflate(R.menu.detail, menu);
         return true;
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (mPlace.getPhone().equals("")) {
+            menu.findItem(R.id.call).setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
 }

@@ -47,7 +47,7 @@ public class CategoryFragment extends BaseFragment<FragmentCategoryBinding, Cate
 
     @Override
     public CategoryViewModel getViewModel() {
-        return CategoryViewModel.getInstance(this, getGmtPreferences(), this, getCategoryDomain());
+        return CategoryViewModel.getInstance(this, this, getCategoryDomain());
     }
 
     @Override

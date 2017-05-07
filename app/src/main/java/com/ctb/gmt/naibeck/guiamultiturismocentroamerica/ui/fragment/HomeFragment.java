@@ -10,6 +10,7 @@ import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.viewmodel.HomeViewModel
 
 import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity.NITE_LIFE;
 import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity.SELECTED_CATEGORY;
+import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity.TOURISTIC_PLACE;
 import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity.WHAT_WE_DO;
 import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity.WHAT_WE_EAT;
 import static com.ctb.gmt.naibeck.guiamultiturismocentroamerica.ui.activity.MainActivity.WHERE_DO_WE_SHOP;
@@ -29,7 +30,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     @Override
     public HomeViewModel getViewModel() {
-        return HomeViewModel.getInstance(this, getGmtPreferences());
+        return HomeViewModel.getInstance(this);
     }
 
     @Override
@@ -50,6 +51,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         getBinding().homeCompra.setOnClickListener(this);
         getBinding().homeHospedaje.setOnClickListener(this);
         getBinding().homeNocturno.setOnClickListener(this);
+        getBinding().homeLugares.setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +71,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 break;
             case R.id.homeNocturno:
                 goCategoryActivity(NITE_LIFE);
+                break;
+            case R.id.homeLugares:
+                goCategoryActivity(TOURISTIC_PLACE);
                 break;
         }
     }

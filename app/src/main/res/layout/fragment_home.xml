@@ -46,7 +46,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="200dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/hospedaje" />
+                                app:srcCompat="@drawable/hospedaje_menu" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                                 android:layout_height="150dp"
                                 android:layout_marginTop="8dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/noche" />
+                                app:srcCompat="@drawable/nocturna_menu" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -90,6 +90,36 @@
                                 android:background="#aa000000"
                                 android:padding="8dp"
                                 android:text="@string/nite_life"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/homeActividades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/gridLinear">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginTop="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/hacemos_menu" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/menu_que_hacemos"
+                                android:layout_centerInParent="true"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:background="#aa000000"
+                                android:padding="8dp"
+                                android:text="@string/que_hacemos"
                                 android:textAlignment="center"
                                 android:textColor="@android:color/white" />
                         </RelativeLayout>
@@ -116,7 +146,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="150dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/comida" />
+                                app:srcCompat="@drawable/comemos_menu" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -146,7 +176,7 @@
                                 android:layout_height="200dp"
                                 android:layout_marginTop="8dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/compra" />
+                                app:srcCompat="@drawable/compramos_menu" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -164,41 +194,41 @@
                                 android:textAlignment="center"
                                 android:textColor="@android:color/white" />
                         </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/homeLugares"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/gridLinear">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginTop="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/lugares_menu" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/menuactividades"
+                                android:layout_centerInParent="true"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:background="#aa000000"
+                                android:padding="8dp"
+                                android:text="@string/lugares_tur_sticos"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white" />
+                        </RelativeLayout>
                     </LinearLayout>
 
                 </RelativeLayout>
 
             </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/homeActividades"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/gridLinear">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="8dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/actividades" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/menuactividades"
-                    android:layout_centerInParent="true"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:background="#aa000000"
-                    android:padding="8dp"
-                    android:text="@string/que_hacemos"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white" />
-            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </layout>

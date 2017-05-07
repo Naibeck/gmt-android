@@ -18,7 +18,7 @@
     <style name="CategoryTextView" parent="GeneralTextView">
         <item name="android:paddingBottom">@dimen/view_vertical_margin</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/spectra</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="ActionTextView" parent="GeneralTextView">

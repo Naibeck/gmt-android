@@ -25,38 +25,26 @@ public class MapViewModel extends BaseObservable {
     private static MapViewModel sInstance;
 
     private MapFragment mFragment;
-    private GmtSharedPreferences mSharedPreferences;
     private PlacePinDomain mPlacePinDomain;
     private PlacePinLoadListener mPlacePinLoadListener;
 
     public static MapViewModel getInstance(@NonNull MapFragment fragment,
-                                           @NonNull GmtSharedPreferences preferences,
                                            @NonNull PlacePinDomain placePinDomain,
                                            @NonNull PlacePinLoadListener placePinLoadListener) {
         if (sInstance != null) {
             return sInstance;
         }
 
-        sInstance = new MapViewModel(fragment, preferences, placePinDomain, placePinLoadListener);
+        sInstance = new MapViewModel(fragment, placePinDomain, placePinLoadListener);
         return sInstance;
     }
 
     public MapViewModel(MapFragment mFragment,
-                        GmtSharedPreferences mSharedPreferences,
                         PlacePinDomain mPlacePinDomain,
                         PlacePinLoadListener mPlacePinLoadListener) {
         this.mFragment = mFragment;
-        this.mSharedPreferences = mSharedPreferences;
         this.mPlacePinDomain = mPlacePinDomain;
         this.mPlacePinLoadListener = mPlacePinLoadListener;
-    }
-
-    public LatLng getLatLngFromUser() {
-        if (mSharedPreferences.getLastStoredLocation() != null) {
-            return new LatLng(mSharedPreferences.getLastStoredLocation().getLatitude(),
-                    mSharedPreferences.getLastStoredLocation().getLongitude());
-        }
-        return null;
     }
 
     public BitmapDescriptor getIcon(@DrawableRes int drawableResource) {

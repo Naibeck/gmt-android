@@ -63,6 +63,9 @@ public class CategoryActivity extends BaseActivity<ActivityCategoryBinding, Void
             case MainActivity.WHERE_DO_WE_SHOP:
                 categoryTitle = getString(R.string.donde_compramos);
                 break;
+            case MainActivity.TOURISTIC_PLACE:
+                categoryTitle = getString(R.string.lugares_tur_sticos);
+                break;
             default:
                 categoryTitle = "Error";
         }
@@ -81,7 +84,6 @@ public class CategoryActivity extends BaseActivity<ActivityCategoryBinding, Void
     @Override
     protected void onStop() {
         super.onStop();
-        getGmtPreferences().removeInstance();
         getCategoryDomain().removeInstance();
     }
 }
