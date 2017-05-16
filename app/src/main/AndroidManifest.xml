@@ -51,6 +51,12 @@
             android:label="@string/results"/>
         <activity android:name=".ui.activity.GalleryItemActivity"
             android:parentActivityName=".ui.activity.PlaceDetailActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="131c98f534ef92bfae8d89fa7b7796efccaf79f4"
+            />
+
     </application>
 
 </manifest>

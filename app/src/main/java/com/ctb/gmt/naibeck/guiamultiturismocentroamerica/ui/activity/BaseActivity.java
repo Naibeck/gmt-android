@@ -20,6 +20,7 @@ import android.view.animation.Animation;
 
 import com.android.annotations.NonNull;
 import com.android.annotations.Nullable;
+import com.crashlytics.android.Crashlytics;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.GmtClient;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.api.domain.CategoryDomain;
 import com.ctb.gmt.naibeck.guiamultiturismocentroamerica.utility.LocationDomain;
@@ -32,6 +33,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Handles the base logic for the rest of activities.
@@ -51,6 +54,8 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, getLayout());
         setViewModelToBinding();
+
+        Fabric.with(this, new Crashlytics());
 
         initToolbar(getToolbar());
         initComponents(mBinding);
