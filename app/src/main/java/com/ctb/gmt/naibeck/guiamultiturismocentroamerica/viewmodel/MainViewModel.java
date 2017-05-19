@@ -35,14 +35,12 @@ public class MainViewModel extends BaseObservable {
         this.mSearchContent = mSearchContent;
     }
 
-    public void goSearchActivity(Context context) {
-        if (getSearchContent() != null) {
-            if (!getSearchContent().equals("")) {
-                Intent intent = new Intent(context, SearchActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(SearchFragment.SEARCH_REQUEST, getSearchContent());
-                context.startActivity(intent);
-            }
+    public void goSearchActivity(Context context, String searchResult) {
+        if (searchResult != null || !searchResult.equals("")) {
+            Intent intent = new Intent(context, SearchActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(SearchFragment.SEARCH_REQUEST, getSearchContent());
+            context.startActivity(intent);
         } else {
             Toast.makeText(context, "Ingresa un valor para buscar", Toast.LENGTH_SHORT).show();
         }

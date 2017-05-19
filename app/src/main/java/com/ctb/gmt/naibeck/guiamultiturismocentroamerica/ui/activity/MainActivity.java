@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         getBinding().contentHome.searchMapIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getViewModel().goSearchActivity(getContext());
+                getViewModel().goSearchActivity(getContext(), getBinding().contentHome.searchTextBar.getText().toString());
             }
         });
     }
@@ -218,7 +218,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-            getViewModel().goSearchActivity(this);
+            getViewModel().goSearchActivity(this, getBinding().contentHome.searchTextBar.getText().toString());
             return true;
         }
         return false;

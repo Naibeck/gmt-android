@@ -125,7 +125,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM> extends AppCo
 
     public void openGoogleMaps(String latitude, String longitude) {
         Intent map = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("geo:" + latitude + "," + longitude + "?z=500"));
+                Uri.parse("google.navigation:q=" + latitude + "," + longitude));
         startActivity(map);
     }
 
